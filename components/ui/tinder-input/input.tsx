@@ -19,7 +19,7 @@ const CustomInput = React.forwardRef<HTMLInputElement, React.ComponentProps<type
 );
 CustomInput.displayName = "CustomInput";
 
-const CustomInputGroup = React.forwardRef<HTMLDivElement, React.ComponentProps<typeof InputGroup>>(
+const CustomInputGroupBase = React.forwardRef<HTMLDivElement, React.ComponentProps<typeof InputGroup>>(
     ({className, ...props}, ref) => (
         <InputGroup
             ref={ref}
@@ -28,7 +28,14 @@ const CustomInputGroup = React.forwardRef<HTMLDivElement, React.ComponentProps<t
         />
     )
 );
-CustomInputGroup.displayName = "CustomInputGroup";
+CustomInputGroupBase.displayName = "CustomInputGroup";
+
+const CustomInputGroup = Object.assign(CustomInputGroupBase, {
+    Input: InputGroup.Input,
+    Prefix: InputGroup.Prefix,
+    Suffix: InputGroup.Suffix,
+    TextArea: InputGroup.TextArea,
+});
 
 const CustomInputOtp = React.forwardRef<HTMLInputElement, React.ComponentProps<typeof InputOTP>>(
     ({className, children, ...props}, ref) => (
