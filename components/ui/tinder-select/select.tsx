@@ -15,7 +15,7 @@ import {
 import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-export interface CustomSelectProps extends React.ComponentPropsWithoutRef<typeof SelectRoot> {
+export interface CustomSelectProps extends Omit<React.ComponentPropsWithoutRef<typeof SelectRoot>, "items"> {
   label?: React.ReactNode;
   description?: React.ReactNode;
   placeholder?: string;
@@ -35,7 +35,7 @@ const CustomSelectBase = ({
     <SelectRoot className={cn("flex flex-col gap-1.5", className)} {...props}>
       {label && <Label className="text-sm font-bold text-zinc-800 ml-1">{label}</Label>}
       <SelectTrigger className="flex items-center justify-between w-full h-11 px-4 bg-zinc-50 border border-zinc-200 rounded-2xl outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all text-sm text-zinc-700 data-placeholder:text-zinc-400">
-        <SelectValue>{({ selectedItem }) => (selectedItem as { textValue?: string })?.textValue || placeholder}</SelectValue>
+        <SelectValue>{({ defaultChildren, isPlaceholder }) => isPlaceholder ? placeholder : defaultChildren}</SelectValue>
         <SelectIndicator>
           <ChevronDown className="w-4 h-4 text-zinc-400 transition-transform data-open:rotate-180" />
         </SelectIndicator>
