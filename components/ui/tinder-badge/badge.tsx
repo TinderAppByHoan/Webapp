@@ -1,8 +1,13 @@
 "use client";
 
 import * as React from "react";
-import {Badge, type BadgeProps} from "@heroui/react";
-import {cn} from "@/lib/utils";
+import {
+    BadgeRoot,
+    BadgeAnchor,
+    BadgeLabel,
+    type BadgeProps
+} from "@heroui/react";
+import { cn } from "@/lib/utils";
 
 export interface CustomBadgeProps extends BadgeProps {
     className?: string;
@@ -10,10 +15,10 @@ export interface CustomBadgeProps extends BadgeProps {
     color?: "default" | "accent" | "success" | "warning" | "danger";
 }
 
-const CustomBadge = React.forwardRef<HTMLSpanElement, CustomBadgeProps>(
-    ({className, variant = "primary", ...props}, ref) => {
+const CustomBadgeBase = React.forwardRef<HTMLSpanElement, CustomBadgeProps>(
+    ({ className, variant = "primary", ...props }, ref) => {
         return (
-            <Badge
+            <BadgeRoot
                 ref={ref}
                 variant={variant}
                 className={cn(
@@ -27,6 +32,11 @@ const CustomBadge = React.forwardRef<HTMLSpanElement, CustomBadgeProps>(
     }
 );
 
-CustomBadge.displayName = "CustomBadge";
+CustomBadgeBase.displayName = "CustomBadge";
 
-export {CustomBadge};
+const CustomBadge = Object.assign(CustomBadgeBase, {
+    Anchor: BadgeAnchor,
+    Label: BadgeLabel,
+});
+
+export { CustomBadge };

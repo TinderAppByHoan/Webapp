@@ -29,8 +29,8 @@ export const AppNavbar = () => {
           <Link href="#" className="text-sm font-medium hover:text-primary transition-colors pb-1">
             Discover
           </Link>
-          <Link href="#" className="text-sm font-medium hover:text-primary transition-colors pb-1">
-            Messages
+          <Link href="/gallery" className="text-sm font-medium hover:text-primary transition-colors pb-1">
+            Gallery
           </Link>
         </div>
 
@@ -84,8 +84,8 @@ export const AppNavbar = () => {
           <Link href="#" className="block px-4 py-2 font-medium hover:text-primary">
             Discover
           </Link>
-          <Link href="#" className="block px-4 py-2 font-medium hover:text-primary">
-            Messages
+          <Link href="/gallery" className="block px-4 py-2 font-medium hover:text-primary">
+            Gallery
           </Link>
         </div>
       )}

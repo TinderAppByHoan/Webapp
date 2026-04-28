@@ -1,31 +1,35 @@
 "use client";
 
 import * as React from "react";
-import { Alert, type AlertProps } from "@heroui/react";
+import {
+  AlertRoot,
+  AlertIndicator,
+  AlertContent,
+  AlertTitle,
+  AlertDescription,
+  type AlertProps
+} from "@heroui/react";
 import { cn } from "@/lib/utils";
 
-export interface CustomAlertProps extends AlertProps {
-  variant?: "primary" | "secondary" | "default";
-}
-
-const CustomAlert = React.forwardRef<HTMLDivElement, CustomAlertProps>(
-  ({ className, variant = "primary", children, ...props }, ref) => {
+const CustomAlertBase = React.forwardRef<HTMLDivElement, AlertProps>(
+  ({ className, ...props }, ref) => {
     return (
-      <Alert
+      <AlertRoot
         ref={ref}
-        className={cn(
-          "rounded-xl border-none shadow-sm",
-          variant === "primary" && "bg-primary-50 text-primary-900 border-l-4 border-primary",
-          className
-        )}
+        className={cn("rounded-xl border-none shadow-sm", className)}
         {...props}
-      >
-        {children}
-      </Alert>
+      />
     );
   }
 );
 
-CustomAlert.displayName = "CustomAlert";
+CustomAlertBase.displayName = "CustomAlert";
+
+const CustomAlert = Object.assign(CustomAlertBase, {
+  Indicator: AlertIndicator,
+  Content: AlertContent,
+  Title: AlertTitle,
+  Description: AlertDescription,
+});
 
 export { CustomAlert };
