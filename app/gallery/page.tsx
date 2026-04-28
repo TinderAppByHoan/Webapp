@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 import {
     CustomButton,
     CustomButtonGroup,
@@ -20,6 +22,7 @@ import {
     CustomLabel,
     CustomDescription,
     CustomCloseButton,
+    CustomTabs,
 } from "@/components/ui";
 import {
     Heart,
@@ -27,7 +30,8 @@ import {
     Mail,
     Star,
 } from "lucide-react";
-import { Accordion, Autocomplete, Breadcrumbs, ListBox, Tabs } from "@heroui/react";
+import { Autocomplete, Breadcrumbs, ListBox } from "@heroui/react";
+import { CustomFooter } from "@/components/layout/footer";
 
 export default function GalleryPage() {
     return (
@@ -119,10 +123,10 @@ export default function GalleryPage() {
                                     <CustomBadge color="accent">New</CustomBadge>
                                 </CustomBadge.Anchor>
                                 <CustomBadge.Anchor>
-                                    <CustomAvatar>
-                                        <CustomAvatar.Image src="https://i.pravatar.cc/150?u=a042581f4e29026704d" />
-                                        <CustomAvatar.Fallback>RH</CustomAvatar.Fallback>
-                                    </CustomAvatar>
+                                    <CustomAvatar
+                                        image="https://i.pravatar.cc/150?u=a042581f4e29026704d"
+                                        fallback="RH"
+                                    />
                                     <CustomBadge color="danger">5</CustomBadge>
                                 </CustomBadge.Anchor>
                             </div>
@@ -140,28 +144,21 @@ export default function GalleryPage() {
                                     VIP
                                 </CustomChip>
                             </div>
-                            <CustomAccordion allowsMultipleExpanded>
-                                <Accordion.Item key="1">
-                                    <Accordion.Heading>
-                                        <Accordion.Trigger>Community Guidelines</Accordion.Trigger>
-                                    </Accordion.Heading>
-                                    <Accordion.Panel>
-                                        <Accordion.Body>
-                                            Be kind, respectful, and genuine with others.
-                                        </Accordion.Body>
-                                    </Accordion.Panel>
-                                </Accordion.Item>
-                                <Accordion.Item key="2">
-                                    <Accordion.Heading>
-                                        <Accordion.Trigger>Privacy Policy</Accordion.Trigger>
-                                    </Accordion.Heading>
-                                    <Accordion.Panel>
-                                        <Accordion.Body>
-                                            We value your privacy and keep your data safe.
-                                        </Accordion.Body>
-                                    </Accordion.Panel>
-                                </Accordion.Item>
-                            </CustomAccordion>
+                            <CustomAccordion
+                                allowsMultipleExpanded
+                                items={[
+                                    {
+                                        id: "1",
+                                        title: "Community Guidelines",
+                                        content: "Be kind, respectful, and genuine with others."
+                                    },
+                                    {
+                                        id: "2",
+                                        title: "Privacy Policy",
+                                        content: "We value your privacy and keep your data safe."
+                                    }
+                                ]}
+                            />
                         </div>
                     </div>
                 </section>
@@ -228,10 +225,11 @@ export default function GalleryPage() {
                         <CustomCard className="border-pink-50 overflow-hidden group">
                             <div className="h-24 bg-gradient-to-r from-pink-200 to-primary/30" />
                             <div className="px-6 pb-6 -mt-10 flex flex-col items-center text-center">
-                                <CustomAvatar className="w-20 h-20 border-4 border-white shadow-md mb-3">
-                                    <CustomAvatar.Image src="https://i.pravatar.cc/150?u=a042581f4e29026704d" />
-                                    <CustomAvatar.Fallback>RH</CustomAvatar.Fallback>
-                                </CustomAvatar>
+                                <CustomAvatar
+                                    className="w-20 h-20 border-4 border-white shadow-md mb-3"
+                                    image="https://i.pravatar.cc/150?u=a042581f4e29026704d"
+                                    fallback="RH"
+                                />
                                 <h3 className="font-bold text-zinc-800">Rose Henderson</h3>
                                 <p className="text-xs text-zinc-500 mb-4">Designer • New York</p>
                                 <div className="flex gap-2 w-full">
@@ -243,42 +241,55 @@ export default function GalleryPage() {
 
                         {/* Info Card */}
                         <CustomCard className="col-span-1 md:col-span-2 border-pink-50 p-6">
-                            <Tabs aria-label="Options" variant="primary">
-                                <Tabs.List>
-                                    <Tabs.Tab id="photos">Photos</Tabs.Tab>
-                                    <Tabs.Tab id="interests">Interests</Tabs.Tab>
-                                    <Tabs.Tab id="bio">Bio</Tabs.Tab>
-                                </Tabs.List>
-                                <Tabs.Panel id="photos">
-                                    <div className="grid grid-cols-3 gap-2 pt-4">
-                                        {[1, 2, 3, 4, 5, 6].map(i => (
-                                            <div key={i} className="aspect-square bg-pink-50 rounded-lg overflow-hidden relative group">
-                                                <img
-                                                    src={`https://i.pravatar.cc/300?u=${i}`}
-                                                    alt="Gallery"
-                                                    className="object-cover w-full h-full transition-transform group-hover:scale-110"
-                                                />
+                            <CustomTabs
+                                aria-label="Options"
+                                variant="primary"
+                                items={[
+                                    {
+                                        id: "photos",
+                                        label: "Photos",
+                                        content: (
+                                            <div className="grid grid-cols-3 gap-2">
+                                                {[1, 2, 3, 4, 5, 6].map(i => (
+                                                    <div key={i} className="aspect-square bg-pink-50 rounded-lg overflow-hidden relative group">
+                                                        <Image
+                                                            src={`https://i.pravatar.cc/300?u=${i}`}
+                                                            alt="Gallery"
+                                                            fill
+                                                            sizes="(max-width: 768px) 33vw, (max-width: 1200px) 25vw, 200px"
+                                                            className="object-cover transition-transform group-hover:scale-110"
+                                                        />
+                                                    </div>
+                                                ))}
                                             </div>
-                                        ))}
-                                    </div>
-                                </Tabs.Panel>
-                                <Tabs.Panel id="interests">
-                                    <div className="flex flex-wrap gap-2 pt-4">
-                                        <CustomChip color="accent" variant="soft">Photography</CustomChip>
-                                        <CustomChip color="accent" variant="soft">Travel</CustomChip>
-                                        <CustomChip color="accent" variant="soft">Yoga</CustomChip>
-                                        <CustomChip color="accent" variant="soft">Cooking</CustomChip>
-                                        <CustomChip color="accent" variant="soft">Art</CustomChip>
-                                    </div>
-                                </Tabs.Panel>
-                                <Tabs.Panel id="bio">
-                                    <p className="text-zinc-600 text-sm pt-4 leading-relaxed">
-                                        Exploring the world one coffee shop at a time.
-                                        Love minimal design, sunset walks, and deep conversations.
-                                        Always looking for new inspiration!
-                                    </p>
-                                </Tabs.Panel>
-                            </Tabs>
+                                        )
+                                    },
+                                    {
+                                        id: "interests",
+                                        label: "Interests",
+                                        content: (
+                                            <div className="flex flex-wrap gap-2">
+                                                <CustomChip color="accent" variant="soft">Photography</CustomChip>
+                                                <CustomChip color="accent" variant="soft">Travel</CustomChip>
+                                                <CustomChip color="accent" variant="soft">Yoga</CustomChip>
+                                                <CustomChip color="accent" variant="soft">Cooking</CustomChip>
+                                                <CustomChip color="accent" variant="soft">Art</CustomChip>
+                                            </div>
+                                        )
+                                    },
+                                    {
+                                        id: "bio",
+                                        label: "Bio",
+                                        content: (
+                                            <p className="text-zinc-600 text-sm leading-relaxed">
+                                                Exploring the world one coffee shop at a time.
+                                                Love minimal design, sunset walks, and deep conversations.
+                                                Always looking for new inspiration!
+                                            </p>
+                                        )
+                                    }
+                                ]}
+                            />
                         </CustomCard>
                     </div>
                 </section>
@@ -290,27 +301,14 @@ export default function GalleryPage() {
                         <h2 className="text-2xl font-bold text-zinc-800">Modals & Overlays</h2>
                     </div>
                     <CustomCard className="p-8 border-pink-50 shadow-sm bg-white/50 backdrop-blur-sm flex justify-center gap-8">
-                        <CustomAlertDialog>
-                            <CustomAlertDialog.Trigger>
-                                <CustomButton variant="danger">Open Dialog</CustomButton>
-                            </CustomAlertDialog.Trigger>
-                            <CustomAlertDialog.Backdrop>
-                                <CustomAlertDialog.Dialog>
-                                    <CustomAlertDialog.Header>
-                                        <h3 className="text-xl font-bold">Deactivate Account</h3>
-                                    </CustomAlertDialog.Header>
-                                    <div className="px-6 py-4">
-                                        <p className="text-zinc-500">
-                                            Are you sure you want to deactivate your account? This action cannot be undone.
-                                        </p>
-                                    </div>
-                                    <CustomAlertDialog.Footer>
-                                        <CustomButton variant="ghost">Cancel</CustomButton>
-                                        <CustomButton variant="danger">Deactivate</CustomButton>
-                                    </CustomAlertDialog.Footer>
-                                </CustomAlertDialog.Dialog>
-                            </CustomAlertDialog.Backdrop>
-                        </CustomAlertDialog>
+                        <CustomAlertDialog
+                            trigger={<CustomButton variant="danger">Open Dialog</CustomButton>}
+                            title="Deactivate Account"
+                            description="Are you sure you want to deactivate your account? This action cannot be undone."
+                            cancelText="Cancel"
+                            actionText="Deactivate"
+                            onAction={() => console.log("Account deactivated")}
+                        />
 
                         <CustomButton variant="outline" onClick={() => alert("Modal would open here")}>
                             Open Profile Modal
@@ -320,9 +318,7 @@ export default function GalleryPage() {
             </main>
 
             {/* Footer decoration */}
-            <footer className="text-center text-zinc-400 text-sm py-10 border-t border-pink-50">
-                <p>© 2026 Tinder Social Network UI Kit</p>
-            </footer>
+            <CustomFooter />
         </div>
     );
 }

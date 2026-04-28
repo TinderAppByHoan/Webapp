@@ -10,10 +10,12 @@ import { cn } from "@/lib/utils";
 
 export interface CustomAvatarProps extends React.ComponentPropsWithoutRef<typeof AvatarRoot> {
     className?: string;
+    image?: string;
+    fallback?: React.ReactNode;
 }
 
 const CustomAvatarBase = React.forwardRef<HTMLSpanElement, CustomAvatarProps>(
-    ({ className, ...props }, ref) => {
+    ({ className, image, fallback, children, ...props }, ref) => {
         return (
             <AvatarRoot
                 ref={ref}
@@ -22,7 +24,11 @@ const CustomAvatarBase = React.forwardRef<HTMLSpanElement, CustomAvatarProps>(
                     className
                 )}
                 {...props}
-            />
+            >
+                {image && <AvatarImage src={image} />}
+                {fallback && <AvatarFallback>{fallback}</AvatarFallback>}
+                {children}
+            </AvatarRoot>
         );
     }
 );

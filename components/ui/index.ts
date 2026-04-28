@@ -17,3 +17,4 @@ export * from "./tinder-datePicker/date-picker";
 export * from "./tinder-form/form-elements";
 export * from "./tinder-input/input";
 export * from "./tinder-misc/misc-elements";
+export * from "./tinder-tabs/tabs";
