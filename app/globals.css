@@ -1,27 +1,52 @@
 @import "tailwindcss";
 @import "@heroui/styles";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --font-sans: "Outfit", var(--font-geist-sans), ui-sans-serif, system-ui;
+  --color-primary: #ff85a1;
+  --color-primary-50: #fff0f3;
+  --color-primary-100: #ffccd5;
+  --color-primary-200: #ffb3c1;
+  --color-primary-300: #ff85a1;
+  --color-primary-400: #ff758f;
+  --color-primary-500: #ff4d6d;
+  --color-primary-600: #c9184a;
+  --color-primary-700: #a4133c;
+  --color-primary-800: #800f2f;
+  --color-primary-900: #590d22;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+:root {
+  --background: #fffcfd;
+  --foreground: #2d1b22;
+  --primary: #ff85a1;
+  --primary-foreground: #ffffff;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #1a0f13;
+    --foreground: #fff0f3;
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Glassmorphism utility */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dark .glass {
+  background: rgba(26, 15, 19, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
