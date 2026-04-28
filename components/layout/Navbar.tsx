@@ -16,7 +16,7 @@ export const AppNavbar = () => {
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Brand */}
         <div className="flex items-center">
-          <Link href="/" className="font-bold text-2xl tracking-tighter text-primary">
+          <Link href="/public" className="font-bold text-2xl tracking-tighter text-primary">
             TINDER
           </Link>
         </div>

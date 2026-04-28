@@ -1,5 +1,5 @@
 import { Button, Card, Avatar } from "@heroui/react";
-import { AppNavbar } from "@/components/Navbar";
+import { AppNavbar } from "@/components/layout/Navbar";
 import { Heart, MessageCircle, Share2, MoreHorizontal } from "lucide-react";
 import Image from "next/image";
 
