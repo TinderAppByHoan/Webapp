@@ -1,4 +1,4 @@
-export * from "./tinder-accordion/accordion";
+export { default as CustomerAccordion } from "./tinder-accordion/accordion";
 export { default as CustomAlert } from "./tinder-alert/alert";
 export { default as CustomAlertDialog } from "./tinder-alertDialog/alert-dialog";
 export * from "./tinder-autocomplete/autocomplete";
@@ -28,7 +28,6 @@ export * from "./tinder-toolbar/toolbar";
 export * from "./tinder-toggleButton/toggle-button";
 export * from "./tinder-tooltip/tooltip";
 export { default as CustomAvatar } from "./tinder-avatar/avatar";
-export { default as CustomBadge } from "./tinder-badge/badge";
 export { default as CustomBreadcrumbs } from "./tinder-breadcrumb/breadcrumbs";
 export { default as CustomButton } from "./tinder-button/button";
 export * from "./tinder-buttonGroup/button-group";

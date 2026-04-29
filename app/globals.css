@@ -4,16 +4,11 @@
 @theme {
   --font-sans: "Outfit", var(--font-geist-sans), ui-sans-serif, system-ui;
   --color-primary: #ff85a1;
-  --color-primary-50: #fff0f3;
-  --color-primary-100: #ffccd5;
-  --color-primary-200: #ffb3c1;
-  --color-primary-300: #ff85a1;
-  --color-primary-400: #ff758f;
-  --color-primary-500: #ff4d6d;
-  --color-primary-600: #c9184a;
-  --color-primary-700: #a4133c;
-  --color-primary-800: #800f2f;
-  --color-primary-900: #590d22;
+  --color-secondary: #b794f4;
+  --color-tinder: #ff85a1;
+  --color-peach: #ff785a;
+  --color-heroui-blue: #006fee;
+  --color-heroui-purple: #7828c8;
   
   /* Semantic Surface Colors */
   --color-surface: var(--surface);
@@ -23,27 +18,36 @@
 }
 
 :root {
-  --background: #fffcfd;
+  --background: #fffdfc;
   --foreground: #2d1b22;
-  --primary: #ff85a1;
-  --primary-foreground: #ffffff;
   
+  --primary: #ff85a1;
+  --secondary: #b794f4;
+  --tinder: #ff85a1;
+  --peach: #ff785a;
+
+  --accent: #fff8f5;
   --surface: #ffffff;
-  --surface-soft: #fff5f7;
-  --border-soft: #ffeef1;
+  --surface-soft: #fff8f5;
+  --border-soft: #ffebe6;
   --muted: #8a7078;
 }
 
 .dark {
-  --background: #1a0f13;
-  --foreground: #fff0f3;
+  --background: #1c1416;
+  --foreground: #fff5f7;
   
-  --surface: #26171c;
-  --surface-soft: #321e25;
-  --border-soft: #422831;
-  --muted: #a38d94;
-}
+  --primary: #ff85a1;
+  --secondary: #ff785a;
+  --tinder: #ff85a1;
+  --peach: #ff785a;
 
+  --accent: #2d2224;
+  --surface: #261d1f;
+  --surface-soft: #312629;
+  --border-soft: #423236;
+  --muted: #b5a4aa;
+}
 
 body {
   background: var(--background);
@@ -68,8 +72,14 @@ body {
 
 /* Wave Animation for Dots */
 @keyframes wave-dots {
-  0%, 60%, 100% { transform: translateY(0); }
-  30% { transform: translateY(-3px); }
+  0%,
+  60%,
+  100% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-3px);
+  }
 }
 
 .animate-wave-dot {
@@ -85,3 +95,9 @@ body {
   animation-delay: 0.3s;
 }
 
+/* Unified Theme Transition */
+.transition-colors,
+.transition-all {
+  transition-duration: 500ms !important;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
+}

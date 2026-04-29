@@ -17,6 +17,10 @@ export interface CustomAvatarProps extends React.ComponentPropsWithoutRef<typeof
      * Alt text for the image
      */
     alt?: string;
+    /**
+     * Radius of the avatar.
+     */
+    radius?: "none" | "sm" | "md" | "lg" | "full";
 }
 
 /**
@@ -24,7 +28,7 @@ export interface CustomAvatarProps extends React.ComponentPropsWithoutRef<typeof
  * Features a soft feminine pink theme with full dark mode support using surface tokens.
  */
 const CustomAvatarBase = React.forwardRef<HTMLSpanElement, CustomAvatarProps>(
-    ({ className, image, fallback, alt, children, color = "accent", size = "md", ...props }, ref) => {
+    ({ className, image, fallback, alt, radius, children, color = "accent", size = "md", ...props }, ref) => {
         return (
             <Avatar
                 ref={ref}
@@ -32,7 +36,13 @@ const CustomAvatarBase = React.forwardRef<HTMLSpanElement, CustomAvatarProps>(
                 size={size}
                 className={cn(
                     "ring-2 ring-primary/10 transition-all hover:scale-105 active:scale-95 duration-200",
-                    "bg-surface-soft dark:bg-zinc-800 border-none shadow-sm",
+                    "bg-surface-soft dark:bg-zinc-800 border-none shadow-sm overflow-hidden",
+                    // Map radius prop to Tailwind classes since v3 Avatar doesn't support radius prop
+                    radius === "none" ? "rounded-none" : 
+                    radius === "sm" ? "rounded-sm" : 
+                    radius === "md" ? "rounded-md" : 
+                    radius === "lg" ? "rounded-lg" : 
+                    radius === "full" ? "rounded-full" : "rounded-full",
                     className
                 )}
                 {...props}

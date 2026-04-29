@@ -16,17 +16,19 @@ export interface ButtonGroupItem {
     className?: string;
 }
 
-export interface CustomButtonGroupProps extends React.ComponentPropsWithoutRef<typeof ButtonGroup> {
+export type CustomButtonGroupProps = Omit<React.ComponentPropsWithoutRef<typeof ButtonGroup>, "variant" | "color"> & {
+    variant?: "primary" | "secondary" | "tinder" | "peach" | "outline" | "ghost" | "danger" | "tertiary";
+    color?: "default" | "primary" | "secondary" | "tinder" | "peach" | "success" | "warning" | "danger";
     className?: string;
     items?: ButtonGroupItem[];
-}
+};
 
 /**
  * CustomButtonGroup component tailored for the Tinder Social Network aesthetic.
  * Groups related buttons together with consistent styling and smooth transitions.
  */
 const CustomButtonGroupBase = React.forwardRef<HTMLDivElement, CustomButtonGroupProps>(
-    ({ className, children, items, ...props }, ref) => {
+    ({ className, children, items, variant, color, size, ...props }, ref) => {
         // If items are provided, render them as buttons
         const content = items ? items.map((item) => (
             <CustomButton
@@ -35,39 +37,28 @@ const CustomButtonGroupBase = React.forwardRef<HTMLDivElement, CustomButtonGroup
                 isDisabled={item.isDisabled}
                 isIconOnly={item.isIconOnly}
                 className={item.className}
+                variant={variant as any}
+                color={color as any}
+                size={size as any}
             >
                 {item.icon}
                 {item.label}
             </CustomButton>
         )) : children;
 
-        const childrenArray = React.Children.toArray(content);
-
         return (
             <ButtonGroup
                 ref={ref}
+                variant={variant as any}
+                color={color as any}
+                size={size as any}
                 className={cn(
-                    "shadow-sm bg-surface rounded-2xl p-1 border border-border-soft flex items-center",
+                    "shadow-sm bg-surface rounded-2xl border border-border-soft overflow-hidden",
                     className
                 )}
                 {...props}
             >
-                {childrenArray.map((child, index) => {
-                    // Don't add separator to the first button
-                    if (index === 0) return child;
-
-                    if (React.isValidElement(child)) {
-                        return React.cloneElement(child as React.ReactElement<any>, {
-                            children: (
-                                <>
-                                    <ButtonGroup.Separator />
-                                    {child.props.children}
-                                </>
-                            ),
-                        });
-                    }
-                    return child;
-                })}
+                {content}
             </ButtonGroup>
         );
     }
@@ -75,11 +66,6 @@ const CustomButtonGroupBase = React.forwardRef<HTMLDivElement, CustomButtonGroup
 
 CustomButtonGroupBase.displayName = "CustomButtonGroup";
 
-/**
- * Compound component for ButtonGroup, following HeroUI v3 architecture.
- */
-export const CustomButtonGroup = Object.assign(CustomButtonGroupBase, {
-    Separator: ButtonGroup.Separator,
-});
+export const CustomButtonGroup = CustomButtonGroupBase;
 
 export default CustomButtonGroup;

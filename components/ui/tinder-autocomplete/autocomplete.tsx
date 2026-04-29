@@ -102,8 +102,8 @@ const CustomAutocompleteBase = React.forwardRef<HTMLDivElement, CustomAutocomple
                                             const item = items.find((s) => s.id === selectedItem.key);
                                             if (!item) return null;
                                             return (
-                                                <Tag 
-                                                    key={item.id} 
+                                                <Tag
+                                                    key={item.id}
                                                     id={item.id}
                                                     className="bg-primary/10 text-primary dark:bg-primary/20 rounded-lg px-2 py-0.5 text-xs font-medium border-none"
                                                 >
@@ -137,23 +137,23 @@ const CustomAutocompleteBase = React.forwardRef<HTMLDivElement, CustomAutocomple
                 </Autocomplete.Value>
                 <div className="flex items-center gap-1 ml-2">
                     {isLoading && <Spinner size="sm" className="mr-1" />}
-                    <Autocomplete.ClearButton className="text-muted hover:text-zinc-600 dark:hover:text-zinc-400 transition-colors data-empty:hidden outline-none">
-                        <X size={14} />
-                    </Autocomplete.ClearButton>
                     <Autocomplete.Indicator className="outline-none">
                         <ChevronDown className="w-4 h-4 text-muted transition-transform data-open:rotate-180" />
                     </Autocomplete.Indicator>
                 </div>
             </Autocomplete.Trigger>
 
-            <Autocomplete.Popover className="z-50 min-w-(--trigger-width) bg-transparent shadow-none border-none outline-none">
+            <Autocomplete.Popover 
+                offset={8}
+                className="z-50 min-w-(--trigger-width) bg-surface border border-zinc-900/10 dark:border-white/10 shadow-xl rounded-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200"
+            >
                 <Autocomplete.Filter filter={contains}>
-                    <div className="bg-surface border border-border-soft shadow-xl rounded-2xl p-1 animate-in fade-in zoom-in-95 duration-200 flex flex-col gap-1">
+                    <div className="p-1 flex flex-col gap-1">
                         <SearchField className="px-2 pt-1 pb-1">
                             <SearchField.Group className="flex items-center gap-2 bg-surface-soft border border-border-soft rounded-xl px-3 h-9 focus-within:border-primary/50 transition-all">
                                 <Search size={14} className="text-muted" />
-                                <SearchField.Input 
-                                    placeholder="Search..." 
+                                <SearchField.Input
+                                    placeholder="Search..."
                                     className="bg-transparent outline-none text-sm w-full text-zinc-700 dark:text-zinc-200 placeholder:text-muted"
                                 />
                                 <SearchField.ClearButton className="text-muted hover:text-zinc-600 dark:hover:text-zinc-400 outline-none">
@@ -162,7 +162,7 @@ const CustomAutocompleteBase = React.forwardRef<HTMLDivElement, CustomAutocomple
                             </SearchField.Group>
                         </SearchField>
 
-                        <ListBox 
+                        <ListBox
                             renderEmptyState={() => (
                                 <EmptyState className="py-4 px-2 text-center text-sm text-muted">
                                     {isLoading ? "Loading..." : "No results found"}
@@ -175,11 +175,11 @@ const CustomAutocompleteBase = React.forwardRef<HTMLDivElement, CustomAutocomple
                                     key={item.id}
                                     id={item.id}
                                     textValue={item.label}
-                                    className="flex flex-col px-3 py-2 rounded-xl hover:bg-primary/10 text-zinc-700 dark:text-zinc-200 data-selected:bg-primary data-selected:text-white transition-colors cursor-pointer outline-none"
+                                    className="flex flex-col items-start px-3 py-1.5 gap-0.5 rounded-xl hover:bg-primary/10 text-zinc-700 dark:text-zinc-200 data-selected:bg-primary data-selected:text-white transition-colors cursor-pointer outline-none"
                                 >
-                                    <span className="text-sm font-medium">{item.label}</span>
+                                    <span className="text-sm font-bold leading-tight">{item.label}</span>
                                     {item.description && (
-                                        <span className="text-xs opacity-70">{item.description}</span>
+                                        <span className="text-[11px] opacity-70 leading-tight">{item.description}</span>
                                     )}
                                 </ListBox.Item>
                             ))}

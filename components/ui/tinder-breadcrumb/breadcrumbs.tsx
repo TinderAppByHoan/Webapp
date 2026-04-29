@@ -14,6 +14,10 @@ export interface CustomBreadcrumbsProps extends React.ComponentPropsWithoutRef<t
         href?: string;
         isCurrent?: boolean;
     }[];
+    /**
+     * Whether to underline the items.
+     */
+    underline?: "none" | "hover" | "always";
 }
 
 /**
@@ -21,7 +25,7 @@ export interface CustomBreadcrumbsProps extends React.ComponentPropsWithoutRef<t
  * Provides clear navigation hierarchy with a soft, feminine aesthetic and dark mode support.
  */
 const CustomBreadcrumbsBase = React.forwardRef<HTMLOListElement, CustomBreadcrumbsProps>(
-    ({ className, items, children, ...props }, ref) => {
+    ({ className, items, underline = "none", children, ...props }, ref) => {
         return (
             <Breadcrumbs
                 ref={ref}
@@ -40,7 +44,9 @@ const CustomBreadcrumbsBase = React.forwardRef<HTMLOListElement, CustomBreadcrum
                               className={cn(
                                   "transition-colors duration-200",
                                   "text-muted hover:text-primary",
-                                  "data-[current=true]:text-primary data-[current=true]:font-bold"
+                                  "data-[current=true]:text-primary data-[current=true]:font-bold",
+                                  underline === "hover" && "hover:underline",
+                                  underline === "always" && "underline"
                               )}
                           >
                               {item.title}

@@ -49,3 +49,4 @@ const CustomAccordion = ({ className, items, children, ...props }: CustomAccordi
 );
 
 export { CustomAccordion };
+export default CustomAccordion;
