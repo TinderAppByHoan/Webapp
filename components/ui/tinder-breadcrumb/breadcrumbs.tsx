@@ -18,7 +18,7 @@ export interface CustomBreadcrumbsProps extends React.ComponentPropsWithoutRef<t
 
 /**
  * CustomBreadcrumbs component for the Tinder Social Network.
- * Provides clear navigation hierarchy with a soft, feminine aesthetic.
+ * Provides clear navigation hierarchy with a soft, feminine aesthetic and dark mode support.
  */
 const CustomBreadcrumbsBase = React.forwardRef<HTMLOListElement, CustomBreadcrumbsProps>(
     ({ className, items, children, ...props }, ref) => {
@@ -26,7 +26,7 @@ const CustomBreadcrumbsBase = React.forwardRef<HTMLOListElement, CustomBreadcrum
             <Breadcrumbs
                 ref={ref}
                 className={cn(
-                    "flex flex-wrap items-center text-sm text-zinc-500 font-medium",
+                    "flex flex-wrap items-center text-sm text-muted font-medium",
                     className
                 )}
                 {...props}
@@ -39,8 +39,8 @@ const CustomBreadcrumbsBase = React.forwardRef<HTMLOListElement, CustomBreadcrum
                               href={item.href}
                               className={cn(
                                   "transition-colors duration-200",
-                                  "data-[current=true]:text-primary data-[current=true]:font-bold",
-                                  "hover:text-primary/80"
+                                  "text-muted hover:text-primary",
+                                  "data-[current=true]:text-primary data-[current=true]:font-bold"
                               )}
                           >
                               {item.title}

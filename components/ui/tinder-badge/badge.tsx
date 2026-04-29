@@ -21,7 +21,7 @@ export interface CustomBadgeProps extends React.ComponentPropsWithoutRef<typeof 
 
 /**
  * CustomBadge component refined for the Tinder Social Network aesthetic.
- * Optimized for notification counts, status indicators, and labels with a feminine touch.
+ * Features premium borders and consistent styling for dark mode.
  */
 const CustomBadgeBase = React.forwardRef<HTMLSpanElement, CustomBadgeProps>(
     ({ className, color = "accent", variant = "primary", size = "md", ...props }, ref) => {
@@ -32,7 +32,7 @@ const CustomBadgeBase = React.forwardRef<HTMLSpanElement, CustomBadgeProps>(
                 variant={variant}
                 size={size}
                 className={cn(
-                    "font-bold tracking-tight border-2 border-white shadow-sm",
+                    "font-bold tracking-tight border-2 border-white dark:border-zinc-900 shadow-sm",
                     color === "accent" && variant === "primary" && "bg-primary text-white",
                     className
                 )}
@@ -46,7 +46,6 @@ CustomBadgeBase.displayName = "CustomBadge";
 
 /**
  * Compound component for Badge, following HeroUI v3 architecture.
- * Use Badge.Anchor to position the badge relative to another element (e.g., Avatar).
  */
 export const CustomBadge = Object.assign(CustomBadgeBase, {
     Anchor: Badge.Anchor,

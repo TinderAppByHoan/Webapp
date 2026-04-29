@@ -21,7 +21,7 @@ export interface CustomAvatarProps extends React.ComponentPropsWithoutRef<typeof
 
 /**
  * CustomAvatar component tailored for the Tinder Social Network aesthetic.
- * Features a soft feminine pink theme by default with smooth transitions.
+ * Features a soft feminine pink theme with full dark mode support using surface tokens.
  */
 const CustomAvatarBase = React.forwardRef<HTMLSpanElement, CustomAvatarProps>(
     ({ className, image, fallback, alt, children, color = "accent", size = "md", ...props }, ref) => {
@@ -32,7 +32,7 @@ const CustomAvatarBase = React.forwardRef<HTMLSpanElement, CustomAvatarProps>(
                 size={size}
                 className={cn(
                     "ring-2 ring-primary/10 transition-all hover:scale-105 active:scale-95 duration-200",
-                    "bg-zinc-50 border-none shadow-sm",
+                    "bg-surface-soft dark:bg-zinc-800 border-none shadow-sm",
                     className
                 )}
                 {...props}
@@ -48,7 +48,7 @@ const CustomAvatarBase = React.forwardRef<HTMLSpanElement, CustomAvatarProps>(
                     <Avatar.Fallback 
                         className={cn(
                             "font-bold tracking-tight",
-                            color === "accent" && "bg-primary/10 text-primary"
+                            color === "accent" && "bg-primary/10 text-primary dark:bg-primary/20"
                         )}
                     >
                         {fallback}

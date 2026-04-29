@@ -13,7 +13,7 @@ export interface CustomButtonProps extends React.ComponentPropsWithoutRef<typeof
 
 /**
  * CustomButton component refined for the Tinder Social Network aesthetic.
- * Features smooth transitions, premium shadows, and a feminine color palette.
+ * Features smooth transitions, premium shadows, and full dark mode support.
  */
 const CustomButton = React.forwardRef<HTMLButtonElement, CustomButtonProps>(
     ({ className, variant = "primary", size = "md", ...props }, ref) => {
@@ -34,14 +34,19 @@ const CustomButton = React.forwardRef<HTMLButtonElement, CustomButtonProps>(
                     // Secondary variant: Soft pink background
                     variant === "secondary" && [
                         "bg-pink-50 text-primary hover:bg-pink-100",
+                        "dark:bg-surface-soft dark:text-primary dark:hover:bg-zinc-800",
                         "border-none"
                     ],
                     // Outline variant: Pink border
                     variant === "outline" && [
-                        "border-2 border-pink-200 text-primary hover:bg-pink-50 hover:border-pink-300"
+                        "border-2 border-pink-200 text-primary hover:bg-pink-50 hover:border-pink-300",
+                        "dark:border-zinc-700 dark:text-pink-400 dark:hover:bg-zinc-800 dark:hover:border-zinc-600"
                     ],
                     // Ghost variant
-                    variant === "ghost" && "hover:bg-pink-50 text-zinc-600 hover:text-primary",
+                    variant === "ghost" && [
+                        "text-muted hover:bg-pink-50 hover:text-primary",
+                        "dark:hover:bg-zinc-800 dark:hover:text-primary"
+                    ],
                     className
                 )}
                 {...props}

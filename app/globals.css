@@ -14,6 +14,12 @@
   --color-primary-700: #a4133c;
   --color-primary-800: #800f2f;
   --color-primary-900: #590d22;
+  
+  /* Semantic Surface Colors */
+  --color-surface: var(--surface);
+  --color-surface-soft: var(--surface-soft);
+  --color-border-soft: var(--border-soft);
+  --color-muted: var(--muted);
 }
 
 :root {
@@ -21,14 +27,23 @@
   --foreground: #2d1b22;
   --primary: #ff85a1;
   --primary-foreground: #ffffff;
+  
+  --surface: #ffffff;
+  --surface-soft: #fff5f7;
+  --border-soft: #ffeef1;
+  --muted: #8a7078;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #1a0f13;
-    --foreground: #fff0f3;
-  }
+.dark {
+  --background: #1a0f13;
+  --foreground: #fff0f3;
+  
+  --surface: #26171c;
+  --surface-soft: #321e25;
+  --border-soft: #422831;
+  --muted: #a38d94;
 }
+
 
 body {
   background: var(--background);
@@ -50,3 +65,23 @@ body {
   background: rgba(26, 15, 19, 0.7);
   border: 1px solid rgba(255, 255, 255, 0.05);
 }
+
+/* Wave Animation for Dots */
+@keyframes wave-dots {
+  0%, 60%, 100% { transform: translateY(0); }
+  30% { transform: translateY(-3px); }
+}
+
+.animate-wave-dot {
+  display: inline-block;
+  animation: wave-dots 0.8s infinite ease-in-out;
+}
+
+.animate-wave-dot:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.animate-wave-dot:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
