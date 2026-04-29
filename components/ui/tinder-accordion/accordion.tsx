@@ -3,6 +3,7 @@
 import * as React from "react";
 import {cn} from "@/lib/utils";
 import {Accordion} from "@heroui/react";
+import {ChevronDown} from "lucide-react";
 
 export interface AccordionItemData {
     id: string | number;
@@ -22,7 +23,12 @@ const CustomAccordion = ({className, items, children, ...props}: CustomAccordion
         {items ? items.map((item) => (
             <Accordion.Item key={item.id} id={item.id.toString()}>
                 <Accordion.Heading>
-                    <Accordion.Trigger>{item.title}</Accordion.Trigger>
+                    <Accordion.Trigger>
+                        {item.title}
+                    </Accordion.Trigger>
+                    <Accordion.Indicator>
+                        <ChevronDown/>
+                    </Accordion.Indicator>
                 </Accordion.Heading>
                 <Accordion.Panel>
                     <Accordion.Body>{item.content}</Accordion.Body>

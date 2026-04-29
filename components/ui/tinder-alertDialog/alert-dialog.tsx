@@ -2,121 +2,119 @@
 
 import * as React from "react";
 import {
-  AlertDialogRoot,
-  AlertDialogBackdrop,
-  AlertDialogDialog,
-  AlertDialogHeader,
-  AlertDialogFooter,
-  AlertDialogTrigger,
-  AlertDialogBody,
-  AlertDialogIcon,
-  AlertDialogCloseTrigger,
-  AlertDialogContainer
+    AlertDialog,
+    Button,
 } from "@heroui/react";
-import { cn } from "@/lib/utils";
+import {ButtonVariant, Size} from "@/constants/ui";
 
-import { CustomButton } from "../tinder-button/button";
+export interface CustomAlertDialogProps
+    extends Omit<React.ComponentProps<typeof AlertDialog>, "children"> {
+    // for trigger button
+    triggerClassName?: string;
+    triggerChildren?: React.ReactNode;
 
-const StyledAlertDialogBackdrop = ({ className, variant = "blur", ...props }: React.ComponentPropsWithoutRef<typeof AlertDialogBackdrop>) => (
-  <AlertDialogBackdrop
-    variant={variant}
-    className={cn(className)}
-    {...props}
-  />
-);
+    // for header
+    isIcon?: boolean;
+    iconHeaderVariant?: AlertDialogIconVariant;
+    headingTitle: string;
+    customIcon?: React.ReactNode;
 
-const StyledAlertDialogDialog = ({ className, ...props }: React.ComponentPropsWithoutRef<typeof AlertDialogDialog>) => (
-  <AlertDialogDialog
-    className={cn(
-      "max-w-md border-none shadow-2xl glass rounded-3xl",
-      className
-    )}
-    {...props}
-  />
-);
+    // for body
+    body: React.ReactNode;
 
-const StyledAlertDialogHeader = ({ className, ...props }: React.ComponentPropsWithoutRef<typeof AlertDialogHeader>) => (
-  <AlertDialogHeader className={cn("flex flex-col gap-1 items-center text-center", className)} {...props} />
-);
+    // for footer
+    confirmButtonText: React.ReactNode | string;
+    footerButtonVariant?: ButtonVariant;
 
-const StyledAlertDialogFooter = ({ className, ...props }: React.ComponentPropsWithoutRef<typeof AlertDialogFooter>) => (
-  <AlertDialogFooter className={cn("flex justify-center gap-2", className)} {...props} />
-);
-
-export interface CustomAlertDialogProps extends Omit<React.ComponentProps<typeof AlertDialogRoot>, "children"> {
-  trigger?: React.ReactNode;
-  title?: React.ReactNode;
-  description?: React.ReactNode;
-  cancelText?: string;
-  actionText?: string;
-  onAction?: () => void;
-  onCancel?: () => void;
-  backdropVariant?: "blur" | "opaque" | "transparent" | undefined;
-  children?: React.ReactNode;
+    // common
+    isCloseTrigger?: boolean;
+    placement?: AlertDialogPlacement;
+    backdropVariant?: BackdropVariant;
+    containerSize?: Size;
 }
 
-const CustomAlertDialogBase = ({
-  trigger,
-  title,
-  description,
-  cancelText,
-  actionText,
-  onAction,
-  onCancel,
-  backdropVariant = "blur",
-  children,
-  ...props
-}: CustomAlertDialogProps) => {
-  return (
-    <AlertDialogRoot {...props}>
-      {trigger && <AlertDialogTrigger>{trigger}</AlertDialogTrigger>}
-      {children ? children : (
-        <StyledAlertDialogBackdrop variant={backdropVariant}>
-          <StyledAlertDialogDialog>
-            {title && (
-              <StyledAlertDialogHeader>
-                <h3 className="text-xl font-bold">{title}</h3>
-              </StyledAlertDialogHeader>
-            )}
-            {description && (
-              <div className="px-6 py-4">
-                <p className="text-zinc-500 text-center">
-                  {description}
-                </p>
-              </div>
-            )}
-            {(cancelText || actionText) && (
-              <StyledAlertDialogFooter>
-                {cancelText && (
-                  <CustomButton variant="ghost" onClick={onCancel}>
-                    {cancelText}
-                  </CustomButton>
-                )}
-                {actionText && (
-                  <CustomButton variant="danger" onClick={onAction}>
-                    {actionText}
-                  </CustomButton>
-                )}
-              </StyledAlertDialogFooter>
-            )}
-          </StyledAlertDialogDialog>
-        </StyledAlertDialogBackdrop>
-      )}
-    </AlertDialogRoot>
-  );
-};
+const CustomAlertDialog =
+    ({
+         triggerChildren,
+         triggerClassName,
+         isIcon = false,
+         iconHeaderVariant,
+         headingTitle,
+         body,
+         confirmButtonText,
+         footerButtonVariant = "danger",
+         isCloseTrigger = true,
+         placement = "auto",
+         backdropVariant = "blur",
+         containerSize = "md",
+         customIcon,
+     }: CustomAlertDialogProps) => {
+        return (
+            <AlertDialog>
+                {/* Trigger controlled */}
+                <AlertDialog.Trigger className={triggerClassName}>
+                    {triggerChildren}
+                </AlertDialog.Trigger>
 
-const CustomAlertDialog = Object.assign(CustomAlertDialogBase, {
-  Root: AlertDialogRoot,
-  Trigger: AlertDialogTrigger,
-  Backdrop: StyledAlertDialogBackdrop,
-  Container: AlertDialogContainer,
-  Dialog: StyledAlertDialogDialog,
-  Header: StyledAlertDialogHeader,
-  Body: AlertDialogBody,
-  Footer: StyledAlertDialogFooter,
-  Icon: AlertDialogIcon,
-  CloseTrigger: AlertDialogCloseTrigger,
-});
+                <AlertDialog.Backdrop
+                    variant={backdropVariant}
+                    isDismissable
+                >
+                    <AlertDialog.Container size={containerSize} placement={placement}>
+                        <AlertDialog.Dialog className="sm:max-w-[400px]">
 
-export { CustomAlertDialog };
+                            {isCloseTrigger && <AlertDialog.CloseTrigger/>}
+
+                            <AlertDialog.Header>
+                                {isIcon && iconHeaderVariant && (
+                                    <AlertDialog.Icon status={iconHeaderVariant}>
+                                        {customIcon}
+                                    </AlertDialog.Icon>
+                                )}
+                                <AlertDialog.Heading>{headingTitle}</AlertDialog.Heading>
+                            </AlertDialog.Header>
+
+                            <AlertDialog.Body>{body}</AlertDialog.Body>
+
+                            <AlertDialog.Footer>
+                                <Button
+                                    slot="close"
+                                    variant="tertiary"
+                                >
+                                    Cancel
+                                </Button>
+
+                                <Button
+                                    slot="close"
+                                    variant={footerButtonVariant}
+                                >
+                                    {confirmButtonText}
+                                </Button>
+                            </AlertDialog.Footer>
+
+                        </AlertDialog.Dialog>
+                    </AlertDialog.Container>
+                </AlertDialog.Backdrop>
+            </AlertDialog>
+        );
+    };
+
+export default CustomAlertDialog;
+
+export type AlertDialogIconVariant =
+    "danger" |
+    "default" |
+    "accent" |
+    "success" |
+    "warning"
+
+export type AlertDialogPlacement =
+    "auto" |
+    "top" |
+    "center" |
+    "bottom"
+
+export type BackdropVariant =
+    "opaque" |
+    "blur" |
+    "transparent"

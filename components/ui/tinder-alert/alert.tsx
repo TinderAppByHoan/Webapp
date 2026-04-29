@@ -2,34 +2,76 @@
 
 import * as React from "react";
 import {
-  AlertRoot,
-  AlertIndicator,
-  AlertContent,
-  AlertTitle,
-  AlertDescription,
-  type AlertProps
+    Alert, CloseButton,
 } from "@heroui/react";
-import { cn } from "@/lib/utils";
+import {cn} from "@/lib/utils";
 
-const CustomAlertBase = React.forwardRef<HTMLDivElement, AlertProps>(
-  ({ className, ...props }, ref) => {
-    return (
-      <AlertRoot
-        ref={ref}
-        className={cn("rounded-xl border-none shadow-sm", className)}
-        {...props}
-      />
-    );
-  }
+export interface AlertProps {
+    className?: string;
+    items?: {}[];
+    props?: any;
+    alertStatus: AlertStatus
+    indicatorIcon?: React.ReactNode;
+    isCloseButton?: boolean;
+
+    // for title
+    title: string;
+    titleClassName?: string;
+    titleChildren?: React.ReactNode;
+
+    // for description
+    description: string;
+    descClassName?: string;
+    descChildren?: React.ReactNode;
+}
+
+const CustomAlert = React.forwardRef<HTMLDivElement, AlertProps>(
+    ({
+         className,
+         descClassName,
+         descChildren,
+         titleClassName,
+         titleChildren,
+         isCloseButton = true,
+         title,
+         description,
+         indicatorIcon,
+         alertStatus,
+         items,
+         ...props
+     }, ref) => {
+        return (
+            <Alert
+                ref={ref}
+                className={cn("rounded-xl border-none shadow-sm", className)}
+                {...props}
+                status={alertStatus}
+            >
+                <Alert.Indicator>
+                    {indicatorIcon}
+                </Alert.Indicator>
+                <Alert.Content>
+                    <Alert.Title className={titleClassName}>
+                        {title}
+                        {titleChildren}
+                    </Alert.Title>
+                    <Alert.Description className={descClassName}>
+                        {description}
+                        {descChildren}
+                    </Alert.Description>
+                </Alert.Content>
+                {isCloseButton && <CloseButton/>}
+            </Alert>
+        );
+    }
 );
 
-CustomAlertBase.displayName = "CustomAlert";
+export default CustomAlert;
 
-const CustomAlert = Object.assign(CustomAlertBase, {
-  Indicator: AlertIndicator,
-  Content: AlertContent,
-  Title: AlertTitle,
-  Description: AlertDescription,
-});
-
-export { CustomAlert };
+export type AlertStatus =
+    "accent" |
+    "danger" |
+    "success" |
+    "default" |
+    "warning" |
+    undefined
