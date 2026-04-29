@@ -1,43 +1,73 @@
 "use client";
 
 import * as React from "react";
-import {
-    AvatarRoot,
-    AvatarImage,
-    AvatarFallback
-} from "@heroui/react";
+import { Avatar } from "@heroui/react";
 import { cn } from "@/lib/utils";
 
-export interface CustomAvatarProps extends React.ComponentPropsWithoutRef<typeof AvatarRoot> {
-    className?: string;
+export interface CustomAvatarProps extends React.ComponentPropsWithoutRef<typeof Avatar> {
+    /**
+     * URL of the image to display
+     */
     image?: string;
+    /**
+     * Fallback content to display if image fails to load or isn't provided
+     */
     fallback?: React.ReactNode;
+    /**
+     * Alt text for the image
+     */
+    alt?: string;
 }
 
+/**
+ * CustomAvatar component tailored for the Tinder Social Network aesthetic.
+ * Features a soft feminine pink theme by default with smooth transitions.
+ */
 const CustomAvatarBase = React.forwardRef<HTMLSpanElement, CustomAvatarProps>(
-    ({ className, image, fallback, children, ...props }, ref) => {
+    ({ className, image, fallback, alt, children, color = "accent", size = "md", ...props }, ref) => {
         return (
-            <AvatarRoot
+            <Avatar
                 ref={ref}
+                color={color}
+                size={size}
                 className={cn(
-                    "ring-2 ring-primary/20 transition-transform hover:scale-105",
+                    "ring-2 ring-primary/10 transition-all hover:scale-105 active:scale-95 duration-200",
+                    "bg-zinc-50 border-none shadow-sm",
                     className
                 )}
                 {...props}
             >
-                {image && <AvatarImage src={image} />}
-                {fallback && <AvatarFallback>{fallback}</AvatarFallback>}
+                {image && (
+                    <Avatar.Image 
+                        src={image} 
+                        alt={alt || "Avatar"} 
+                        className="object-cover"
+                    />
+                )}
+                {fallback && (
+                    <Avatar.Fallback 
+                        className={cn(
+                            "font-bold tracking-tight",
+                            color === "accent" && "bg-primary/10 text-primary"
+                        )}
+                    >
+                        {fallback}
+                    </Avatar.Fallback>
+                )}
                 {children}
-            </AvatarRoot>
+            </Avatar>
         );
     }
 );
 
 CustomAvatarBase.displayName = "CustomAvatar";
 
-const CustomAvatar = Object.assign(CustomAvatarBase, {
-    Image: AvatarImage,
-    Fallback: AvatarFallback,
+/**
+ * Compound component for Avatar, allowing for both prop-based and children-based usage.
+ */
+export const CustomAvatar = Object.assign(CustomAvatarBase, {
+    Image: Avatar.Image,
+    Fallback: Avatar.Fallback,
 });
 
-export { CustomAvatar };
+export default CustomAvatar;

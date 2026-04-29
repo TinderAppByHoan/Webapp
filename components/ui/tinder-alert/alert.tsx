@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { Spinner } from "@heroui/react";
 import {
     Alert, CloseButton,
 } from "@heroui/react";
@@ -23,6 +24,7 @@ export interface AlertProps {
     description: string;
     descClassName?: string;
     descChildren?: React.ReactNode;
+    isLoading?: boolean;
 }
 
 const CustomAlert = React.forwardRef<HTMLDivElement, AlertProps>(
@@ -38,6 +40,7 @@ const CustomAlert = React.forwardRef<HTMLDivElement, AlertProps>(
          indicatorIcon,
          alertStatus,
          items,
+         isLoading,
          ...props
      }, ref) => {
         return (
@@ -48,7 +51,7 @@ const CustomAlert = React.forwardRef<HTMLDivElement, AlertProps>(
                 status={alertStatus}
             >
                 <Alert.Indicator>
-                    {indicatorIcon}
+                    {isLoading ? <Spinner size="sm" color="current" /> : indicatorIcon}
                 </Alert.Indicator>
                 <Alert.Content>
                     <Alert.Title className={titleClassName}>

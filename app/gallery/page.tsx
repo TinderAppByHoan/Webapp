@@ -1,324 +1,254 @@
 "use client";
 
-import Image from "next/image";
+import { Bell, CheckCircle, User } from "lucide-react";
 
 import {
-    CustomButton,
-    CustomButtonGroup,
-    CustomCard,
-    CustomAvatar,
-    CustomBadge,
-    CustomBreadcrumbs,
     CustomAccordion,
     CustomAlert,
     CustomAlertDialog,
     CustomAutocomplete,
-    CustomCalendar,
-    CustomCheckbox,
-    CustomChip,
-    CustomDatePicker,
-    CustomInput,
-    CustomInputGroup,
-    CustomLabel,
-    CustomDescription,
-    CustomCloseButton,
-    CustomTabs,
+    CustomAvatar,
+    CustomButton
 } from "@/components/ui";
-import {
-    Heart,
-    Bell,
-    Mail,
-    Star,
-} from "lucide-react";
-import { Autocomplete, Breadcrumbs, ListBox } from "@heroui/react";
-import { CustomFooter } from "@/components/layout/footer";
 
 export default function GalleryPage() {
     return (
-        <div className="min-h-screen bg-[#fffcfd] pb-20">
-            {/* Header */}
-            <header className="bg-white border-b border-pink-100 py-12 px-6 mb-12">
-                <div className="max-w-6xl mx-auto">
-                    <CustomBreadcrumbs className="mb-4">
-                        <Breadcrumbs.Item href="/">Home</Breadcrumbs.Item>
-                        <Breadcrumbs.Item>Component Gallery</Breadcrumbs.Item>
-                    </CustomBreadcrumbs>
-                    <h1 className="text-4xl font-bold text-zinc-900 tracking-tight mb-2">
-                        UI Component <span className="text-primary">Gallery</span>
-                    </h1>
-                    <p className="text-zinc-500 max-w-2xl">
-                        A showcase of all custom components built for the Tinder Social Network.
-                        Designed with a feminine aesthetic using HeroUI v3.
-                    </p>
-                </div>
+        <div className="min-h-screen bg-[#fffcfd] p-8 space-y-16 max-w-5xl mx-auto">
+            <header className="border-b border-pink-100 pb-8">
+                <h1 className="text-4xl font-bold text-zinc-900 tracking-tight">
+                    Component <span className="text-primary">Gallery</span>
+                </h1>
+                <p className="text-zinc-500 mt-2">
+                    Bản xem trước các component giao diện tùy chỉnh của hệ thống.
+                </p>
             </header>
 
-            <main className="max-w-6xl mx-auto px-6 space-y-16">
-
-                {/* Buttons Section */}
-                <section>
-                    <div className="flex items-center gap-2 mb-6">
-                        <div className="w-1 h-8 bg-primary rounded-full" />
-                        <h2 className="text-2xl font-bold text-zinc-800">Buttons & Actions</h2>
+            <main className="space-y-20">
+                {/* avatar-preview */}
+                <section id="avatar-preview" className="space-y-6">
+                    <div className="flex items-center gap-3">
+                        <div className="w-1.5 h-8 bg-primary rounded-full" />
+                        <h2 className="text-2xl font-bold text-zinc-800">avatar-preview</h2>
                     </div>
-                    <CustomCard className="p-8 border-pink-50 shadow-sm bg-white/50 backdrop-blur-sm">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                            <div className="space-y-4">
-                                <h3 className="text-sm font-semibold uppercase tracking-wider text-zinc-400 mb-4">Variants</h3>
-                                <div className="flex flex-wrap gap-4">
-                                    <CustomButton variant="primary">Primary Button</CustomButton>
-                                    <CustomButton variant="secondary">Secondary</CustomButton>
-                                    <CustomButton variant="outline">Outline</CustomButton>
-                                    <CustomButton variant="ghost">Ghost</CustomButton>
-                                    <CustomButton variant="danger">Danger</CustomButton>
-                                </div>
-                            </div>
-                            <div className="space-y-4">
-                                <h3 className="text-sm font-semibold uppercase tracking-wider text-zinc-400 mb-4">With Icons & States</h3>
-                                <div className="flex flex-wrap gap-4">
-                                    <CustomButton variant="primary">
-                                        <Heart className="w-4 h-4" />
-                                        Like
-                                    </CustomButton>
-                                    <CustomButton variant="secondary" isIconOnly>
-                                        <Bell className="w-5 h-5" />
-                                    </CustomButton>
-                                    <CustomButton isPending variant="primary">Loading</CustomButton>
-                                    <CustomButtonGroup>
-                                        <CustomButton variant="outline">Left</CustomButton>
-                                        <CustomButton variant="outline">Middle</CustomButton>
-                                        <CustomButton variant="outline">Right</CustomButton>
-                                    </CustomButtonGroup>
-                                </div>
-                            </div>
-                        </div>
-                    </CustomCard>
-                </section>
-
-                {/* Feedback Section */}
-                <section>
-                    <div className="flex items-center gap-2 mb-6">
-                        <div className="w-1 h-8 bg-primary rounded-full" />
-                        <h2 className="text-2xl font-bold text-zinc-800">Feedback & Status</h2>
-                    </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <div className="space-y-6">
-                            <CustomAlert status="success">
-                                <CustomAlert.Indicator />
-                                <CustomAlert.Content>
-                                    <CustomAlert.Title>Success!</CustomAlert.Title>
-                                    <CustomAlert.Description>Your profile has been updated successfully.</CustomAlert.Description>
-                                </CustomAlert.Content>
-                            </CustomAlert>
-                            <CustomAlert status="warning">
-                                <CustomAlert.Indicator />
-                                <CustomAlert.Content>
-                                    <CustomAlert.Title>Warning</CustomAlert.Title>
-                                    <CustomAlert.Description>Please complete your profile to get more matches.</CustomAlert.Description>
-                                </CustomAlert.Content>
-                            </CustomAlert>
-                            <div className="flex flex-wrap gap-4">
-                                <CustomBadge.Anchor>
-                                    <CustomButton variant="outline">Notifications</CustomButton>
-                                    <CustomBadge color="accent">New</CustomBadge>
-                                </CustomBadge.Anchor>
-                                <CustomBadge.Anchor>
-                                    <CustomAvatar
-                                        image="https://i.pravatar.cc/150?u=a042581f4e29026704d"
-                                        fallback="RH"
-                                    />
-                                    <CustomBadge color="danger">5</CustomBadge>
-                                </CustomBadge.Anchor>
-                            </div>
-                        </div>
-                        <div className="space-y-6">
-                            <div className="flex flex-wrap gap-3">
-                                <CustomChip variant="soft" color="accent">Fashion</CustomChip>
-                                <CustomChip variant="soft" color="success">Online</CustomChip>
-                                <CustomChip variant="secondary" color="accent">
-                                    Travel
-                                    <CustomCloseButton className="ml-1 w-4 h-4 p-0.5" />
-                                </CustomChip>
-                                <CustomChip variant="primary" color="danger">
-                                    <Star className="w-3 h-3" />
-                                    VIP
-                                </CustomChip>
-                            </div>
-                            <CustomAccordion
-                                allowsMultipleExpanded
-                                items={[
-                                    {
-                                        id: "1",
-                                        title: "Community Guidelines",
-                                        content: "Be kind, respectful, and genuine with others."
-                                    },
-                                    {
-                                        id: "2",
-                                        title: "Privacy Policy",
-                                        content: "We value your privacy and keep your data safe."
-                                    }
-                                ]}
-                            />
-                        </div>
-                    </div>
-                </section>
-
-                {/* Form Elements Section */}
-                <section>
-                    <div className="flex items-center gap-2 mb-6">
-                        <div className="w-1 h-8 bg-primary rounded-full" />
-                        <h2 className="text-2xl font-bold text-zinc-800">Inputs & Forms</h2>
-                    </div>
-                    <CustomCard className="p-8 border-pink-50 shadow-sm bg-white/50 backdrop-blur-sm">
+                    <div className="bg-white p-8 rounded-3xl border border-pink-50 shadow-sm space-y-10">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                            {/* Sizes & Colors */}
                             <div className="space-y-6">
-                                <div className="space-y-2">
-                                    <CustomLabel>Email Address</CustomLabel>
-                                    <CustomInputGroup>
-                                        <CustomInputGroup.Prefix>
-                                            <Mail className="w-4 h-4 text-zinc-400" />
-                                        </CustomInputGroup.Prefix>
-                                        <CustomInputGroup.Input placeholder="Enter your email" />
-                                    </CustomInputGroup>
-                                    <CustomDescription>We&apos;ll never share your email.</CustomDescription>
+                                <h3 className="text-sm font-semibold text-zinc-400 uppercase tracking-wider">Kích thước & Màu sắc</h3>
+                                <div className="flex flex-wrap items-end gap-6">
+                                    <CustomAvatar size="sm" fallback="SM" />
+                                    <CustomAvatar size="md" fallback="MD" color="accent" />
+                                    <CustomAvatar size="lg" fallback="LG" color="success" />
+                                    <CustomAvatar className="w-16 h-16 text-lg" fallback="XL" color="warning" />
                                 </div>
-                                <div className="space-y-2">
-                                    <CustomLabel>Interests</CustomLabel>
-                                    <CustomAutocomplete>
-                                        <CustomInput placeholder="Search interests..." />
-                                        <Autocomplete.Popover>
-                                            <ListBox>
-                                                <ListBox.Item id="music">Music</ListBox.Item>
-                                                <ListBox.Item id="art">Art</ListBox.Item>
-                                                <ListBox.Item id="tech">Technology</ListBox.Item>
-                                                <ListBox.Item id="sports">Sports</ListBox.Item>
-                                            </ListBox>
-                                        </Autocomplete.Popover>
-                                    </CustomAutocomplete>
+                                <div className="flex flex-wrap gap-4 mt-4">
+                                    <CustomAvatar color="default" fallback="DF" />
+                                    <CustomAvatar color="accent" fallback="AC" />
+                                    <CustomAvatar color="success" fallback="SC" />
+                                    <CustomAvatar color="warning" fallback="WR" />
+                                    <CustomAvatar color="danger" fallback="DG" />
                                 </div>
-                                <CustomCheckbox>I agree to the terms and conditions</CustomCheckbox>
                             </div>
+
+                            {/* Image & Custom Fallback */}
                             <div className="space-y-6">
-                                <div className="space-y-2">
-                                    <CustomLabel>Birth Date</CustomLabel>
-                                    <CustomDatePicker />
+                                <h3 className="text-sm font-semibold text-zinc-400 uppercase tracking-wider">Hình ảnh & Fallback</h3>
+                                <div className="flex flex-wrap gap-6 items-center">
+                                    <CustomAvatar 
+                                        size="lg"
+                                        image="https://i.pravatar.cc/150?u=rose" 
+                                        fallback="RH" 
+                                        alt="Rose Henderson" 
+                                    />
+                                    <CustomAvatar 
+                                        size="lg"
+                                        fallback={<User className="w-6 h-6 text-primary" />} 
+                                        color="accent" 
+                                    />
+                                    <CustomAvatar size="lg" className="bg-gradient-to-tr from-pink-500 to-yellow-500 p-0.5 shadow-md">
+                                        <div className="w-full h-full rounded-full bg-white p-0.5">
+                                            <CustomAvatar.Image 
+                                                src="https://i.pravatar.cc/150?u=jane" 
+                                                className="rounded-full object-cover"
+                                            />
+                                            <CustomAvatar.Fallback>JD</CustomAvatar.Fallback>
+                                        </div>
+                                    </CustomAvatar>
                                 </div>
-                                <div className="space-y-2">
-                                    <CustomLabel>Availability</CustomLabel>
-                                    <div className="border border-pink-100 rounded-2xl p-2 bg-white">
-                                        <CustomCalendar />
-                                    </div>
-                                </div>
+                                <p className="text-xs text-zinc-400 italic">
+                                    * Tự động phóng lớn nhẹ khi di chuột qua (Hover effect).
+                                </p>
                             </div>
                         </div>
-                    </CustomCard>
+                    </div>
+                </section>
+                {/* accordion-preview */}
+                <section id="accordion-preview" className="space-y-6">
+                    <div className="flex items-center gap-3">
+                        <div className="w-1.5 h-8 bg-primary rounded-full" />
+                        <h2 className="text-2xl font-bold text-zinc-800">accordion-preview</h2>
+                    </div>
+                    <div className="bg-white p-8 rounded-3xl border border-pink-50 shadow-sm">
+                        <CustomAccordion
+                            items={[
+                                {
+                                    id: "1",
+                                    title: "Làm thế nào để bắt đầu?",
+                                    content: "Bạn chỉ cần tạo hồ sơ, thêm ảnh và bắt đầu khám phá những người xung quanh có cùng sở thích."
+                                },
+                                {
+                                    id: "2",
+                                    title: "Gói thành viên Premium có gì?",
+                                    content: "Với Premium, bạn có thể xem ai đã thích mình, sử dụng lượt quay lại không giới hạn và đổi vị trí đến bất cứ đâu."
+                                },
+                                {
+                                    id: "3",
+                                    title: "Chính sách bảo mật thông tin",
+                                    content: "Chúng tôi cam kết bảo mật tuyệt đối thông tin cá nhân và vị trí của bạn, chỉ chia sẻ khi bạn cho phép."
+                                }
+                            ]}
+                        />
+                    </div>
                 </section>
 
-                {/* Cards & Layout Section */}
-                <section>
-                    <div className="flex items-center gap-2 mb-6">
-                        <div className="w-1 h-8 bg-primary rounded-full" />
-                        <h2 className="text-2xl font-bold text-zinc-800">Cards & Profile</h2>
+                {/* alert-preview */}
+                <section id="alert-preview" className="space-y-6">
+                    <div className="flex items-center gap-3">
+                        <div className="w-1.5 h-8 bg-primary rounded-full" />
+                        <h2 className="text-2xl font-bold text-zinc-800">alert-preview</h2>
                     </div>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        {/* Profile Card */}
-                        <CustomCard className="border-pink-50 overflow-hidden group">
-                            <div className="h-24 bg-gradient-to-r from-pink-200 to-primary/30" />
-                            <div className="px-6 pb-6 -mt-10 flex flex-col items-center text-center">
-                                <CustomAvatar
-                                    className="w-20 h-20 border-4 border-white shadow-md mb-3"
-                                    image="https://i.pravatar.cc/150?u=a042581f4e29026704d"
-                                    fallback="RH"
-                                />
-                                <h3 className="font-bold text-zinc-800">Rose Henderson</h3>
-                                <p className="text-xs text-zinc-500 mb-4">Designer • New York</p>
-                                <div className="flex gap-2 w-full">
-                                    <CustomButton variant="primary" className="flex-1" size="sm">Follow</CustomButton>
-                                    <CustomButton variant="outline" className="flex-1" size="sm">Message</CustomButton>
-                                </div>
-                            </div>
-                        </CustomCard>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        {/* Cột 1: Các trạng thái cơ bản */}
+                        <div className="space-y-4">
+                            <h3 className="text-sm font-semibold text-zinc-400 uppercase tracking-wider mb-4">Các trạng thái (Statuses)</h3>
+                            <CustomAlert 
+                                alertStatus="success" 
+                                title="Thành công" 
+                                description="Yêu cầu của bạn đã được xử lý hoàn tất." 
+                            />
+                            <CustomAlert 
+                                alertStatus="warning" 
+                                title="Cảnh báo" 
+                                description="Dung lượng bộ nhớ của bạn sắp đầy." 
+                            />
+                            <CustomAlert 
+                                alertStatus="danger" 
+                                title="Lỗi nghiêm trọng" 
+                                description="Không thể kết nối với máy chủ cơ sở dữ liệu." 
+                            />
+                            <CustomAlert 
+                                alertStatus="accent" 
+                                title="Thông báo mới" 
+                                description="Rose Henderson vừa gửi cho bạn một tin nhắn." 
+                            />
+                            <CustomAlert 
+                                alertStatus="default" 
+                                title="Thông tin chung" 
+                                description="Phiên bản ứng dụng hiện tại là v3.0.3." 
+                            />
+                        </div>
 
-                        {/* Info Card */}
-                        <CustomCard className="col-span-1 md:col-span-2 border-pink-50 p-6">
-                            <CustomTabs
-                                aria-label="Options"
-                                variant="primary"
+                        {/* Cột 2: Tùy chỉnh Icon & Nút đóng */}
+                        <div className="space-y-4">
+                            <h3 className="text-sm font-semibold text-zinc-400 uppercase tracking-wider mb-4">Tùy chỉnh UI (Icons & Controls)</h3>
+                            <CustomAlert 
+                                alertStatus="success"
+                                title="Xác thực hai lớp" 
+                                description="Tài khoản của bạn đang được bảo vệ an toàn."
+                                indicatorIcon={<CheckCircle className="w-5 h-5 text-green-500" />}
+                            />
+                            <CustomAlert 
+                                alertStatus="accent"
+                                title="Nhắc nhở lịch hẹn" 
+                                description="Bạn có một cuộc hẹn vào lúc 19:00 tối nay."
+                                indicatorIcon={<Bell className="w-5 h-5 text-primary" />}
+                            />
+                            <CustomAlert 
+                                alertStatus="default" 
+                                title="Thông báo cố định" 
+                                description="Thông báo này không thể bị đóng bởi người dùng."
+                                isCloseButton={false}
+                            />
+                            <CustomAlert 
+                                alertStatus="accent"
+                                title="Cấu trúc phức tạp"
+                                description="Sử dụng titleChildren và descChildren để thêm các phần tử React."
+                                titleChildren={<span className="ml-2 px-2 py-0.5 bg-primary text-[10px] text-white rounded-full uppercase">Mới</span>}
+                                descChildren={
+                                    <div className="mt-2 flex gap-2">
+                                        <button className="text-xs font-bold text-primary hover:underline">Xem chi tiết</button>
+                                        <button className="text-xs font-bold text-zinc-400 hover:underline">Bỏ qua</button>
+                                    </div>
+                                }
+                            />
+                            <CustomAlert 
+                                alertStatus="default"
+                                isLoading
+                                title="Đang xử lý dữ liệu" 
+                                description="Vui lòng đợi trong khi hệ thống đồng bộ hóa thông tin hồ sơ của bạn."
+                            />
+                        </div>
+                    </div>
+                </section>
+
+                {/* alertDialog-preview */}
+                <section id="alertDialog-preview" className="space-y-6">
+                    <div className="flex items-center gap-3">
+                        <div className="w-1.5 h-8 bg-primary rounded-full" />
+                        <h2 className="text-2xl font-bold text-zinc-800">alertDialog-preview</h2>
+                    </div>
+                    <div className="bg-white p-12 rounded-3xl border border-pink-50 shadow-sm flex justify-center">
+                        <CustomAlertDialog
+                            triggerChildren={
+                                <CustomButton variant="danger" size="lg" className="rounded-2xl">
+                                    Xóa tài khoản
+                                </CustomButton>
+                            }
+                            headingTitle="Xác nhận xóa tài khoản?"
+                            body="Hành động này sẽ xóa vĩnh viễn toàn bộ dữ liệu, tin nhắn và các lượt match của bạn. Bạn không thể khôi phục sau khi thực hiện."
+                            confirmButtonText="Xác nhận xóa ngay"
+                        />
+                    </div>
+                </section>
+
+                {/* autocomplete-preview */}
+                <section id="autocomplete-preview" className="space-y-6 pb-20">
+                    <div className="flex items-center gap-3">
+                        <div className="w-1.5 h-8 bg-primary rounded-full" />
+                        <h2 className="text-2xl font-bold text-zinc-800">autocomplete-preview</h2>
+                    </div>
+                    <div className="bg-white p-8 rounded-3xl border border-pink-50 shadow-sm">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                            <CustomAutocomplete
+                                label="Địa điểm (Single Select)"
+                                placeholder="Tìm kiếm thành phố..."
                                 items={[
-                                    {
-                                        id: "photos",
-                                        label: "Photos",
-                                        content: (
-                                            <div className="grid grid-cols-3 gap-2">
-                                                {[1, 2, 3, 4, 5, 6].map(i => (
-                                                    <div key={i} className="aspect-square bg-pink-50 rounded-lg overflow-hidden relative group">
-                                                        <Image
-                                                            src={`https://i.pravatar.cc/300?u=${i}`}
-                                                            alt="Gallery"
-                                                            fill
-                                                            sizes="(max-width: 768px) 33vw, (max-width: 1200px) 25vw, 200px"
-                                                            className="object-cover transition-transform group-hover:scale-110"
-                                                        />
-                                                    </div>
-                                                ))}
-                                            </div>
-                                        )
-                                    },
-                                    {
-                                        id: "interests",
-                                        label: "Interests",
-                                        content: (
-                                            <div className="flex flex-wrap gap-2">
-                                                <CustomChip color="accent" variant="soft">Photography</CustomChip>
-                                                <CustomChip color="accent" variant="soft">Travel</CustomChip>
-                                                <CustomChip color="accent" variant="soft">Yoga</CustomChip>
-                                                <CustomChip color="accent" variant="soft">Cooking</CustomChip>
-                                                <CustomChip color="accent" variant="soft">Art</CustomChip>
-                                            </div>
-                                        )
-                                    },
-                                    {
-                                        id: "bio",
-                                        label: "Bio",
-                                        content: (
-                                            <p className="text-zinc-600 text-sm leading-relaxed">
-                                                Exploring the world one coffee shop at a time.
-                                                Love minimal design, sunset walks, and deep conversations.
-                                                Always looking for new inspiration!
-                                            </p>
-                                        )
-                                    }
+                                    { id: "hn", label: "Hà Nội", description: "Thủ đô ngàn năm văn hiến" },
+                                    { id: "hcm", label: "TP. Hồ Chí Minh", description: "Thành phố không ngủ" },
+                                    { id: "dn", label: "Đà Nẵng", description: "Thành phố của những cây cầu" },
+                                    { id: "hp", label: "Hải Phòng", description: "Thành phố hoa phượng đỏ" },
+                                    { id: "ct", label: "Cần Thơ", description: "Gạo trắng nước trong" }
                                 ]}
                             />
-                        </CustomCard>
+                            <CustomAutocomplete
+                                label="Sở thích (Multiple Select)"
+                                selectionMode="multiple"
+                                placeholder="Chọn sở thích của bạn..."
+                                items={[
+                                    { id: "travel", label: "Du lịch" },
+                                    { id: "music", label: "Âm nhạc" },
+                                    { id: "food", label: "Ẩm thực" },
+                                    { id: "sport", label: "Thể thao" },
+                                    { id: "art", label: "Nghệ thuật" },
+                                    { id: "movie", label: "Điện ảnh" },
+                                    { id: "reading", label: "Đọc sách" }
+                                ]}
+                            />
+                        </div>
                     </div>
-                </section>
-
-                {/* Overlays Section */}
-                <section className="pb-20">
-                    <div className="flex items-center gap-2 mb-6">
-                        <div className="w-1 h-8 bg-primary rounded-full" />
-                        <h2 className="text-2xl font-bold text-zinc-800">Modals & Overlays</h2>
-                    </div>
-                    <CustomCard className="p-8 border-pink-50 shadow-sm bg-white/50 backdrop-blur-sm flex justify-center gap-8">
-                        <CustomAlertDialog
-                            trigger={<CustomButton variant="danger">Open Dialog</CustomButton>}
-                            title="Deactivate Account"
-                            description="Are you sure you want to deactivate your account? This action cannot be undone."
-                            cancelText="Cancel"
-                            actionText="Deactivate"
-                            onAction={() => console.log("Account deactivated")}
-                        />
-
-                        <CustomButton variant="outline" onClick={() => alert("Modal would open here")}>
-                            Open Profile Modal
-                        </CustomButton>
-                    </CustomCard>
                 </section>
             </main>
-
-            {/* Footer decoration */}
-            <CustomFooter />
         </div>
     );
 }
