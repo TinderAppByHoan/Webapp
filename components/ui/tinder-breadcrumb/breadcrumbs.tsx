@@ -1,21 +1,64 @@
 "use client";
 
 import * as React from "react";
-import {Breadcrumbs} from "@heroui/react/breadcrumbs";
-import {cn} from "@/lib/utils";
+import { Breadcrumbs } from "@heroui/react";
+import { cn } from "@/lib/utils";
 
-const CustomBreadcrumbs = React.forwardRef<HTMLOListElement, React.ComponentProps<typeof Breadcrumbs>>(
-    ({className, ...props}, ref) => {
+export interface CustomBreadcrumbsProps extends React.ComponentPropsWithoutRef<typeof Breadcrumbs> {
+    /**
+     * Optional items array for quick configuration. 
+     * If children are provided, this prop will be ignored for the children's advantage.
+     */
+    items?: {
+        title: React.ReactNode;
+        href?: string;
+        isCurrent?: boolean;
+    }[];
+}
+
+/**
+ * CustomBreadcrumbs component for the Tinder Social Network.
+ * Provides clear navigation hierarchy with a soft, feminine aesthetic.
+ */
+const CustomBreadcrumbsBase = React.forwardRef<HTMLOListElement, CustomBreadcrumbsProps>(
+    ({ className, items, children, ...props }, ref) => {
         return (
             <Breadcrumbs
                 ref={ref}
-                className={cn("px-1", className)}
+                className={cn(
+                    "flex flex-wrap items-center text-sm text-zinc-500 font-medium",
+                    className
+                )}
                 {...props}
-            />
+            >
+                {children
+                    ? children
+                    : items?.map((item, index) => (
+                          <Breadcrumbs.Item
+                              key={index}
+                              href={item.href}
+                              className={cn(
+                                  "transition-colors duration-200",
+                                  "data-[current=true]:text-primary data-[current=true]:font-bold",
+                                  "hover:text-primary/80"
+                              )}
+                          >
+                              {item.title}
+                          </Breadcrumbs.Item>
+                      ))}
+            </Breadcrumbs>
         );
     }
 );
 
-CustomBreadcrumbs.displayName = "CustomBreadcrumbs";
+CustomBreadcrumbsBase.displayName = "CustomBreadcrumbs";
 
-export {CustomBreadcrumbs};
+/**
+ * Compound component for Breadcrumbs, following HeroUI v3 architecture.
+ * Use CustomBreadcrumbs.Item for individual navigation points.
+ */
+export const CustomBreadcrumbs = Object.assign(CustomBreadcrumbsBase, {
+    Item: Breadcrumbs.Item,
+});
+
+export default CustomBreadcrumbs;

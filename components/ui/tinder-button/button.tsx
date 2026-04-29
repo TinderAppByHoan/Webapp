@@ -1,23 +1,47 @@
 "use client";
 
 import * as React from "react";
-import {Button} from "@heroui/react";
-import {cn} from "@/lib/utils";
+import { Button } from "@heroui/react";
+import { cn } from "@/lib/utils";
 
 export interface CustomButtonProps extends React.ComponentPropsWithoutRef<typeof Button> {
+    /**
+     * Additional CSS classes.
+     */
     className?: string;
 }
 
+/**
+ * CustomButton component refined for the Tinder Social Network aesthetic.
+ * Features smooth transitions, premium shadows, and a feminine color palette.
+ */
 const CustomButton = React.forwardRef<HTMLButtonElement, CustomButtonProps>(
-    ({className, variant = "primary", size = "md", ...props}, ref) => {
+    ({ className, variant = "primary", size = "md", ...props }, ref) => {
         return (
             <Button
                 ref={ref}
                 variant={variant}
                 size={size}
                 className={cn(
-                    "font-medium transition-all active:scale-95",
-                    variant === "primary" && "shadow-md shadow-primary/20 hover:shadow-lg hover:shadow-primary/30",
+                    "font-semibold tracking-wide transition-all duration-300",
+                    "active:scale-95 hover:brightness-110",
+                    // Primary variant: Pink gradient & Soft shadow
+                    variant === "primary" && [
+                        "bg-gradient-to-r from-pink-500 to-rose-400 text-white",
+                        "shadow-lg shadow-pink-500/25 hover:shadow-pink-500/40",
+                        "border-none"
+                    ],
+                    // Secondary variant: Soft pink background
+                    variant === "secondary" && [
+                        "bg-pink-50 text-primary hover:bg-pink-100",
+                        "border-none"
+                    ],
+                    // Outline variant: Pink border
+                    variant === "outline" && [
+                        "border-2 border-pink-200 text-primary hover:bg-pink-50 hover:border-pink-300"
+                    ],
+                    // Ghost variant
+                    variant === "ghost" && "hover:bg-pink-50 text-zinc-600 hover:text-primary",
                     className
                 )}
                 {...props}
@@ -28,4 +52,4 @@ const CustomButton = React.forwardRef<HTMLButtonElement, CustomButtonProps>(
 
 CustomButton.displayName = "CustomButton";
 
-export {CustomButton};
+export default CustomButton;

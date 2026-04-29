@@ -1,29 +1,39 @@
 "use client";
 
 import * as React from "react";
-import {
-    BadgeRoot,
-    BadgeAnchor,
-    BadgeLabel,
-    type BadgeProps
-} from "@heroui/react";
+import { Badge } from "@heroui/react";
 import { cn } from "@/lib/utils";
 
-export interface CustomBadgeProps extends BadgeProps {
-    className?: string;
-    variant?: "primary" | "secondary" | "soft";
+export interface CustomBadgeProps extends React.ComponentPropsWithoutRef<typeof Badge> {
+    /**
+     * The color theme of the badge. Defaults to 'accent' (pink) for the Tinder app.
+     */
     color?: "default" | "accent" | "success" | "warning" | "danger";
+    /**
+     * Visual style variant.
+     */
+    variant?: "primary" | "secondary" | "soft";
+    /**
+     * Size of the badge.
+     */
+    size?: "sm" | "md" | "lg";
 }
 
+/**
+ * CustomBadge component refined for the Tinder Social Network aesthetic.
+ * Optimized for notification counts, status indicators, and labels with a feminine touch.
+ */
 const CustomBadgeBase = React.forwardRef<HTMLSpanElement, CustomBadgeProps>(
-    ({ className, variant = "primary", ...props }, ref) => {
+    ({ className, color = "accent", variant = "primary", size = "md", ...props }, ref) => {
         return (
-            <BadgeRoot
+            <Badge
                 ref={ref}
+                color={color}
                 variant={variant}
+                size={size}
                 className={cn(
-                    "font-semibold",
-                    variant === "primary" && "bg-primary text-primary-foreground",
+                    "font-bold tracking-tight border-2 border-white shadow-sm",
+                    color === "accent" && variant === "primary" && "bg-primary text-white",
                     className
                 )}
                 {...props}
@@ -34,9 +44,13 @@ const CustomBadgeBase = React.forwardRef<HTMLSpanElement, CustomBadgeProps>(
 
 CustomBadgeBase.displayName = "CustomBadge";
 
-const CustomBadge = Object.assign(CustomBadgeBase, {
-    Anchor: BadgeAnchor,
-    Label: BadgeLabel,
+/**
+ * Compound component for Badge, following HeroUI v3 architecture.
+ * Use Badge.Anchor to position the badge relative to another element (e.g., Avatar).
+ */
+export const CustomBadge = Object.assign(CustomBadgeBase, {
+    Anchor: Badge.Anchor,
+    Label: Badge.Label,
 });
 
-export { CustomBadge };
+export default CustomBadge;
