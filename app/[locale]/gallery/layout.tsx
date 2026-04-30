@@ -23,7 +23,7 @@ import {
 import { CustomButton } from "@/components/ui";
 import { Switch, cn } from "@heroui/react";
 import { motion, AnimatePresence } from "framer-motion";
-import Link from "next/link";
+import { Link } from "@/lib/i18n-navigation";
 import { usePathname } from "next/navigation";
 import { CustomAvatar } from "@/components/ui";
 
@@ -129,8 +129,9 @@ export default function GalleryLayout({ children }: { children: React.ReactNode 
                             <div className="hidden text-right md:block">
                                 <p className="text-sm font-semibold text-zinc-800 dark:text-zinc-100 leading-tight">Hoàn
                                     Xuân</p>
-                                <p className="text-[10px] font-medium text-muted uppercase tracking-wider">Premium
-                                    Member</p>
+                                <p className="text-[10px] font-medium text-muted uppercase tracking-wider">
+                                    Premium Member
+                                </p>
                             </div>
                             <CustomAvatar
                                 size="md"
@@ -178,7 +179,9 @@ export default function GalleryLayout({ children }: { children: React.ReactNode 
                     </div>
 
                     <nav className="flex-1 overflow-y-hidden hover:overflow-y-auto p-4 pt-2 space-y-1 scrollbar-thin scrollbar-thumb-zinc-200 dark:scrollbar-thumb-zinc-800">
-                        <p className="px-3 py-2 text-[10px] font-bold text-muted uppercase tracking-[0.2em] mb-2">Components</p>
+                        <p className="px-3 py-2 text-[10px] font-bold text-muted uppercase tracking-[0.2em] mb-2">
+                            Components
+                        </p>
                         {sidebarItems.map((item) => {
                             const isActive = pathname === item.href;
                             return (

@@ -3,18 +3,22 @@
 import React from "react";
 import { CustomNavbar } from "@/components/ui/tinder-navbar/navbar";
 import { CustomAvatar } from "@/components/ui/tinder-avatar/avatar";
-import { Flame, MessageCircle, Heart, Bell, User, Search, Menu, Settings } from "lucide-react";
-import Link from "next/link";
+import { Flame, MessageCircle, Heart, Bell, User, Search, Menu as MenuIcon, Settings } from "lucide-react";
+import { Link } from "@/lib/i18n-navigation";
 import { CustomButton } from "@/components/ui";
+import { useTranslations } from "next-intl";
 
 export default function NavbarGallery() {
+    const t = useTranslations("navbar");
+    const tc = useTranslations("common");
+    const ts = useTranslations("sidebar");
+
     return (
         <div className="space-y-16 pb-20">
             <div className="space-y-2">
-                <h1 className="text-3xl font-bold text-zinc-800 dark:text-zinc-100">Navbar</h1>
-                <p className="text-muted max-w-2xl">
-                    The primary navigation interface for your application.
-                    Supports glassmorphism, responsive menus, and premium branding.
+                <h1 className="text-3xl font-bold text-zinc-800 dark:text-zinc-100">{ts("navbar")}</h1>
+                <p className="text-lg text-muted max-w-2xl">
+                    {t("standardNav")}
                 </p>
             </div>
 
@@ -22,7 +26,7 @@ export default function NavbarGallery() {
             <section className="space-y-6">
                 <div className="flex items-center gap-3 shrink-0">
                     <div className="w-1.5 h-8 bg-primary rounded-full shrink-0" />
-                    <h2 className="text-2xl font-bold text-zinc-800 dark:text-zinc-100">Standard Navigation</h2>
+                    <h2 className="text-2xl font-bold text-zinc-800 dark:text-zinc-100">{t("standardNav")}</h2>
                 </div>
                 <div className="border border-border-soft rounded-[32px] overflow-hidden bg-zinc-50 dark:bg-zinc-900 p-8">
                     <CustomNavbar className="rounded-2xl border-none shadow-xl shadow-pink-500/5">
@@ -36,13 +40,13 @@ export default function NavbarGallery() {
                         </CustomNavbar.Brand>
                         <CustomNavbar.Content className="hidden sm:flex gap-8" justify="center">
                             <CustomNavbar.Item isActive>
-                                <Link href="#" className="text-sm font-bold text-primary">Discover</Link>
+                                <Link href="#" className="text-sm font-bold text-primary">{tc("discover")}</Link>
                             </CustomNavbar.Item>
                             <CustomNavbar.Item>
-                                <Link href="#" className="text-sm font-medium text-muted hover:text-zinc-800 dark:hover:text-white transition-colors">Messages</Link>
+                                <Link href="#" className="text-sm font-medium text-muted hover:text-zinc-800 dark:hover:text-white transition-colors">{tc("messages")}</Link>
                             </CustomNavbar.Item>
                             <CustomNavbar.Item>
-                                <Link href="#" className="text-sm font-medium text-muted hover:text-zinc-800 dark:hover:text-white transition-colors">Safety</Link>
+                                <Link href="#" className="text-sm font-medium text-muted hover:text-zinc-800 dark:hover:text-white transition-colors">{tc("safety")}</Link>
                             </CustomNavbar.Item>
                         </CustomNavbar.Content>
                         <CustomNavbar.Content justify="end">
@@ -62,7 +66,7 @@ export default function NavbarGallery() {
             <section className="space-y-6">
                 <div className="flex items-center gap-3 shrink-0">
                     <div className="w-1.5 h-8 bg-primary rounded-full shrink-0" />
-                    <h2 className="text-2xl font-bold text-zinc-800 dark:text-zinc-100">Floating Glass Design</h2>
+                    <h2 className="text-2xl font-bold text-zinc-800 dark:text-zinc-100">{t("floatingNav")}</h2>
                 </div>
                 <div className="relative h-64 border border-border-soft rounded-[32px] overflow-hidden bg-[url('https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=2487&auto=format&fit=crop')] bg-cover bg-center p-6">
                     <div className="absolute inset-0 bg-black/20 backdrop-blur-[2px]" />
@@ -73,15 +77,15 @@ export default function NavbarGallery() {
                         <CustomNavbar.Brand>
                             <div className="flex items-center gap-2 text-white">
                                 <Flame size={20} className="fill-white" />
-                                <span className="font-black text-xl italic tracking-tighter">premium</span>
+                                <span className="font-black text-xl italic tracking-tighter">{t("premium")}</span>
                             </div>
                         </CustomNavbar.Brand>
                         <CustomNavbar.Content className="flex gap-2" justify="end">
                             <CustomButton variant="outline" className="rounded-full border-white/40 text-white hover:bg-white/10" size="sm">
-                                Go Gold
+                                {t("goGold")}
                             </CustomButton>
                             <CustomButton variant="primary" className="rounded-full px-6" size="sm">
-                                Upgrade
+                                {tc("upgrade")}
                             </CustomButton>
                         </CustomNavbar.Content>
                     </CustomNavbar>
@@ -96,7 +100,7 @@ export default function NavbarGallery() {
             <section className="space-y-6">
                 <div className="flex items-center gap-3 shrink-0">
                     <div className="w-1.5 h-8 bg-primary rounded-full shrink-0" />
-                    <h2 className="text-2xl font-bold text-zinc-800 dark:text-zinc-100">Mobile Responsive</h2>
+                    <h2 className="text-2xl font-bold text-zinc-800 dark:text-zinc-100">{t("mobileNav")}</h2>
                 </div>
                 <MobileNavbarDemo />
             </section>
@@ -105,6 +109,8 @@ export default function NavbarGallery() {
 }
 
 function MobileNavbarDemo() {
+    const t = useTranslations("navbar");
+    const tc = useTranslations("common");
     const [isOpen, setIsOpen] = React.useState(false);
 
     return (
@@ -129,24 +135,24 @@ function MobileNavbarDemo() {
                                 <User size={20} />
                             </div>
                             <div>
-                                <div className="font-bold text-sm">My Profile</div>
-                                <div className="text-[10px] text-primary font-black uppercase">90% Complete</div>
+                                <div className="font-bold text-sm">{t("myProfile")}</div>
+                                <div className="text-[10px] text-primary font-black uppercase">90% {t("complete")}</div>
                             </div>
                         </div>
                     </CustomNavbar.MenuItem>
                     <CustomNavbar.MenuItem>
                         <Link href="#" className="flex items-center gap-3 py-3 font-bold text-zinc-800 dark:text-white border-b border-zinc-50 dark:border-white/5">
-                            <MessageCircle size={18} className="text-muted" /> Messages
+                            <MessageCircle size={18} className="text-muted" /> {tc("messages")}
                         </Link>
                     </CustomNavbar.MenuItem>
                     <CustomNavbar.MenuItem>
                         <Link href="#" className="flex items-center gap-3 py-3 font-bold text-zinc-800 dark:text-white border-b border-zinc-50 dark:border-white/5">
-                            <Heart size={18} className="text-muted" /> Top Picks
+                            <Heart size={18} className="text-muted" /> {t("topPicks")}
                         </Link>
                     </CustomNavbar.MenuItem>
                     <CustomNavbar.MenuItem>
                         <Link href="#" className="flex items-center gap-3 py-3 font-bold text-zinc-800 dark:text-white">
-                            <Settings size={18} className="text-muted" /> Settings
+                            <Settings size={18} className="text-muted" /> {tc("settings")}
                         </Link>
                     </CustomNavbar.MenuItem>
                 </CustomNavbar.Menu>
@@ -154,9 +160,9 @@ function MobileNavbarDemo() {
 
             <div className="flex-1 flex items-center justify-center p-8 text-center space-y-4 flex-col">
                 <div className="size-20 rounded-3xl bg-zinc-50 dark:bg-white/5 flex items-center justify-center text-zinc-300">
-                    <Menu size={32} />
+                    <MenuIcon size={32} />
                 </div>
-                <p className="text-sm text-muted">Test the mobile menu by interacting with the toggle button above.</p>
+                <p className="text-sm text-muted">{t("testMobile")}</p>
             </div>
         </div>
     );

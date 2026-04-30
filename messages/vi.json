@@ -1,0 +1,56 @@
+{
+  "common": {
+    "welcome": "Chào mừng bạn đến với Tinder",
+    "discover": "Khám phá",
+    "messages": "Tin nhắn",
+    "safety": "An toàn",
+    "settings": "Cài đặt",
+    "upgrade": "Nâng cấp",
+    "profile": "Hồ sơ",
+    "search": "Tìm kiếm",
+    "bell": "Thông báo"
+  },
+  "navbar": {
+    "goGold": "Mua Gold",
+    "upgradeNow": "Nâng cấp ngay",
+    "premium": "cao cấp",
+    "myProfile": "Hồ sơ của tôi",
+    "complete": "Hoàn tất",
+    "topPicks": "Lựa chọn hàng đầu",
+    "standardNav": "Điều hướng tiêu chuẩn",
+    "floatingNav": "Thiết kế nổi (Glass)",
+    "mobileNav": "Tối ưu di động",
+    "testMobile": "Kiểm tra menu mobile bằng cách tương tác với nút chuyển đổi ở trên."
+  },
+  "gallery": {
+    "overview": "Tổng quan thư viện",
+    "components": "Linh kiện",
+    "title": "Thư viện linh kiện",
+    "description": "Hệ thống thiết kế cao cấp cho mạng xã hội Gia Đình.",
+    "member": "Thành viên Premium",
+    "heroTitle": "Xây dựng trải nghiệm {primary} đẳng cấp.",
+    "heroDesc": "Chào mừng bạn đến với hệ thống thành phần (Component Library) được thiết kế riêng cho mạng xã hội Tinder. Mọi thành phần đều được trau chuốt tỉ mỉ với ngôn ngữ thiết kế \"Premium Feminine\".",
+    "featAesthetic": "Thẩm mỹ Cao cấp",
+    "featAestheticDesc": "Sử dụng hệ thống màu hồng pastel nhẹ nhàng, kết hợp với các hiệu ứng kính mờ (glassmorphism) và đổ bóng mềm mại.",
+    "featPerformance": "Hiệu năng Tối ưu",
+    "featPerformanceDesc": "Xây dựng trên nền tảng HeroUI v3 và Tailwind v4, đảm bảo tốc độ render nhanh chóng và mã nguồn cực kỳ gọn nhẹ.",
+    "featComponents": "Đa dạng Thành phần",
+    "featComponentsDesc": "Hơn 10+ thành phần cơ bản và nâng cao đã sẵn sàng để tích hợp vào các tính năng như Hồ sơ, Nhắn tin, và Cài đặt.",
+    "ctaTitle": "Bắt đầu khám phá ngay hôm nay",
+    "ctaDesc": "Hãy chọn một thành phần từ menu bên trái để xem chi tiết cách sử dụng và các biến thể giao diện.",
+    "ctaBtn": "Xem thành phần đầu tiên"
+  },
+  "sidebar": {
+    "accordion": "Thanh thu gọn",
+    "alert": "Thông báo",
+    "alertDialog": "Hộp thoại cảnh báo",
+    "autocomplete": "Tự động gợi ý",
+    "avatar": "Ảnh đại diện",
+    "breadcrumbs": "Đường dẫn",
+    "button": "Nút bấm",
+    "buttonGroup": "Nhóm nút",
+    "calendar": "Lịch",
+    "card": "Thẻ nội dung",
+    "navbar": "Thanh điều hướng"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "common": {
+    "welcome": "Welcome to Tinder",
+    "discover": "Discover",
+    "messages": "Messages",
+    "safety": "Safety",
+    "settings": "Settings",
+    "upgrade": "Upgrade",
+    "profile": "Profile",
+    "search": "Search",
+    "bell": "Notifications"
+  },
+  "navbar": {
+    "goGold": "Go Gold",
+    "upgradeNow": "Upgrade Now",
+    "premium": "premium",
+    "myProfile": "My Profile",
+    "complete": "Complete",
+    "topPicks": "Top Picks",
+    "standardNav": "Standard Navigation",
+    "floatingNav": "Floating Glass Design",
+    "mobileNav": "Mobile Responsive",
+    "testMobile": "Test the mobile menu by interacting with the toggle button above."
+  },
+  "gallery": {
+    "overview": "Gallery Overview",
+    "components": "Components",
+    "title": "Component Gallery",
+    "description": "Premium design system for Gia Đình Social Network.",
+    "member": "Premium Member",
+    "heroTitle": "Build premium {primary} experiences.",
+    "heroDesc": "Welcome to the custom Component Library designed for the Tinder social network. Every component is meticulously crafted with a \"Premium Feminine\" design language.",
+    "featAesthetic": "Premium Aesthetics",
+    "featAestheticDesc": "Utilizing soft pastel pinks combined with glassmorphism effects and soft drop shadows.",
+    "featPerformance": "Optimized Performance",
+    "featPerformanceDesc": "Built on HeroUI v3 and Tailwind v4, ensuring rapid rendering and lightweight source code.",
+    "featComponents": "Diverse Components",
+    "featComponentsDesc": "Over 10+ core and advanced components ready to be integrated into features like Profile, Messaging, and Settings.",
+    "ctaTitle": "Start Exploring Today",
+    "ctaDesc": "Choose a component from the left menu to view detailed usage and interface variants.",
+    "ctaBtn": "View First Component"
+  },
+  "sidebar": {
+    "accordion": "Accordion",
+    "alert": "Alert",
+    "alertDialog": "Alert Dialog",
+    "autocomplete": "Autocomplete",
+    "avatar": "Avatar",
+    "breadcrumbs": "Breadcrumbs",
+    "button": "Button",
+    "buttonGroup": "Button Group",
+    "calendar": "Calendar",
+    "card": "Card",
+    "navbar": "Navbar"
+  }
+}

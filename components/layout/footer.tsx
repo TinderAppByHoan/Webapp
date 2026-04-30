@@ -2,8 +2,6 @@
 
 import * as React from "react";
 import { Heart, Mail, Sparkles, Globe, MessageCircle, Share2 } from "lucide-react";
-import { CustomLink } from "../ui/tinder-dropdown/dropdown";
-import { CustomInput } from "../ui/tinder-input/input";
 import { cn } from "@/lib/utils";
 
 export type FooterProps = React.HTMLAttributes<HTMLElement>;
@@ -49,10 +47,10 @@ export function CustomFooter({ className, ...props }: FooterProps) {
                     <div>
                         <h4 className="text-zinc-800 font-bold mb-6">Explore</h4>
                         <ul className="space-y-4">
-                            <li><CustomLink href="#" className="text-zinc-500 hover:text-primary no-underline transition-colors">Home Feed</CustomLink></li>
-                            <li><CustomLink href="#" className="text-zinc-500 hover:text-primary no-underline transition-colors">Trending Topics</CustomLink></li>
-                            <li><CustomLink href="#" className="text-zinc-500 hover:text-primary no-underline transition-colors">Community Groups</CustomLink></li>
-                            <li><CustomLink href="#" className="text-zinc-500 hover:text-primary no-underline transition-colors">Safety Center</CustomLink></li>
+                            <li><a href="#" className="text-zinc-500 hover:text-primary no-underline transition-colors">Home Feed</a></li>
+                            <li><a href="#" className="text-zinc-500 hover:text-primary no-underline transition-colors">Trending Topics</a></li>
+                            <li><a href="#" className="text-zinc-500 hover:text-primary no-underline transition-colors">Community Groups</a></li>
+                            <li><a href="#" className="text-zinc-500 hover:text-primary no-underline transition-colors">Safety Center</a></li>
                         </ul>
                     </div>
 
@@ -60,10 +58,10 @@ export function CustomFooter({ className, ...props }: FooterProps) {
                     <div>
                         <h4 className="text-zinc-800 font-bold mb-6">Support</h4>
                         <ul className="space-y-4">
-                            <li><CustomLink href="#" className="text-zinc-500 hover:text-primary no-underline transition-colors">Help Center</CustomLink></li>
-                            <li><CustomLink href="#" className="text-zinc-500 hover:text-primary no-underline transition-colors">Privacy Policy</CustomLink></li>
-                            <li><CustomLink href="#" className="text-zinc-500 hover:text-primary no-underline transition-colors">Terms of Service</CustomLink></li>
-                            <li><CustomLink href="#" className="text-zinc-500 hover:text-primary no-underline transition-colors">Report an Issue</CustomLink></li>
+                            <li><a href="#" className="text-zinc-500 hover:text-primary no-underline transition-colors">Help Center</a></li>
+                            <li><a href="#" className="text-zinc-500 hover:text-primary no-underline transition-colors">Privacy Policy</a></li>
+                            <li><a href="#" className="text-zinc-500 hover:text-primary no-underline transition-colors">Terms of Service</a></li>
+                            <li><a href="#" className="text-zinc-500 hover:text-primary no-underline transition-colors">Report an Issue</a></li>
                         </ul>
                     </div>
 
@@ -74,7 +72,7 @@ export function CustomFooter({ className, ...props }: FooterProps) {
                             Get weekly updates on community highlights and safety tips.
                         </p>
                         <div className="relative group max-w-sm">
-                            <CustomInput
+                            <input
                                 placeholder="Your email address"
                                 className="bg-white/80 border-pink-100 focus:border-primary transition-all rounded-2xl pr-12 h-12"
                             />
