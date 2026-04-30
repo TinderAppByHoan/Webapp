@@ -41,6 +41,7 @@ const sidebarItems = [
     { name: "Calendar", href: "/gallery/calendar", icon: CalendarIcon },
     { name: "Card", href: "/gallery/card", icon: CreditCard },
     { name: "Checkbox", href: "/gallery/checkbox", icon: CheckSquare },
+    { name: "Checkbox Group", href: "/gallery/checkbox-group", icon: Layers },
     { name: "Navbar", href: "/gallery/navbar", icon: PanelTop },
 ];
 
