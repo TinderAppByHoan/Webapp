@@ -6,9 +6,9 @@ import { cn } from "@/lib/utils";
 
 export type CustomButtonProps = Omit<React.ComponentPropsWithoutRef<typeof Button>, "variant"> &
     Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "children"> & {
-        variant?: "primary" | "secondary" | "outline" | "ghost" | "danger" | "tertiary" | "danger-soft" | undefined;
-        title?: string;
-    };
+    variant?: "primary" | "secondary" | "tinder" | "peach" | "success" | "warning" | "outline" | "ghost" | "danger" | "tertiary" | "danger-soft" | undefined;
+    title?: string;
+};
 
 /**
  * CustomButton component refined for the Tinder Social Network aesthetic.
@@ -19,7 +19,7 @@ const CustomButton = React.forwardRef<HTMLButtonElement, CustomButtonProps>(
         return (
             <Button
                 ref={ref}
-                variant={variant}
+                variant={variant as any}
                 size={size}
                 className={cn(
                     "font-semibold tracking-wide transition-all duration-300",

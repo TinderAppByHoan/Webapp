@@ -1,5 +1,5 @@
 import { CustomButton } from "@/components/ui";
-import { Heart, MessageCircle, Send, Trash, Star, Settings } from "lucide-react";
+import { Heart, MessageCircle, Star, Settings } from "lucide-react";
 
 export default function ButtonGallery() {
     return (

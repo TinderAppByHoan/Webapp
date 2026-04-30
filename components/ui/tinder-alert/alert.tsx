@@ -4,10 +4,8 @@ import * as React from "react";
 import { Spinner, Alert, CloseButton } from "@heroui/react";
 import { cn } from "@/lib/utils";
 
-export interface AlertProps {
+export interface AlertProps extends React.HTMLAttributes<HTMLDivElement> {
     className?: string;
-    items?: {}[];
-    props?: any;
     alertStatus: AlertStatus;
     indicatorIcon?: React.ReactNode;
     isCloseButton?: boolean;
@@ -40,7 +38,6 @@ const CustomAlert = React.forwardRef<HTMLDivElement, AlertProps>(
          description,
          indicatorIcon,
          alertStatus,
-         items,
          isLoading,
          ...props
      }, ref) => {
@@ -73,6 +70,8 @@ const CustomAlert = React.forwardRef<HTMLDivElement, AlertProps>(
         );
     }
 );
+
+CustomAlert.displayName = "CustomAlert";
 
 export default CustomAlert;
 

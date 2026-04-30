@@ -143,7 +143,7 @@ const CustomAutocompleteBase = React.forwardRef<HTMLDivElement, CustomAutocomple
                 </div>
             </Autocomplete.Trigger>
 
-            <Autocomplete.Popover 
+            <Autocomplete.Popover
                 offset={8}
                 className="z-50 min-w-(--trigger-width) bg-surface border border-zinc-900/10 dark:border-white/10 shadow-xl rounded-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200"
             >
