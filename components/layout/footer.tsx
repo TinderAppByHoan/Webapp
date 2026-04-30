@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { Heart, Mail, Sparkles, Globe, MessageCircle, Share2 } from "lucide-react";
-import { CustomLink } from "../ui/tinder-misc/misc-elements";
+import { CustomLink } from "../ui/tinder-dropdown/dropdown";
 import { CustomInput } from "../ui/tinder-input/input";
 import { cn } from "@/lib/utils";
 
@@ -10,11 +10,11 @@ export type FooterProps = React.HTMLAttributes<HTMLElement>;
 
 export function CustomFooter({ className, ...props }: FooterProps) {
     return (
-        <footer 
+        <footer
             className={cn(
                 "bg-gradient-to-b from-white to-pink-50/30 border-t border-pink-100/50 pt-16 pb-8",
                 className
-            )} 
+            )}
             {...props}
         >
             <div className="container mx-auto px-6">
@@ -74,8 +74,8 @@ export function CustomFooter({ className, ...props }: FooterProps) {
                             Get weekly updates on community highlights and safety tips.
                         </p>
                         <div className="relative group max-w-sm">
-                            <CustomInput 
-                                placeholder="Your email address" 
+                            <CustomInput
+                                placeholder="Your email address"
                                 className="bg-white/80 border-pink-100 focus:border-primary transition-all rounded-2xl pr-12 h-12"
                             />
                             <button className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-primary rounded-xl flex items-center justify-center text-white shadow-sm hover:scale-110 transition-transform">

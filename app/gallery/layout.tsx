@@ -16,7 +16,9 @@ import {
     Layers,
     Menu,
     LayoutGrid,
-    ChevronsLeft
+    ChevronsLeft,
+    CreditCard,
+    PanelTop
 } from "lucide-react";
 import { CustomButton } from "@/components/ui";
 import { Switch, cn } from "@heroui/react";
@@ -34,6 +36,8 @@ const sidebarItems = [
     { name: "Breadcrumbs", href: "/gallery/breadcrumbs", icon: Layers },
     { name: "Button", href: "/gallery/button", icon: MousePointer2 },
     { name: "Button Group", href: "/gallery/button-group", icon: Layout },
+    { name: "Card", href: "/gallery/card", icon: CreditCard },
+    { name: "Navbar", href: "/gallery/navbar", icon: PanelTop },
 ];
 
 export default function GalleryLayout({ children }: { children: React.ReactNode }) {
@@ -207,9 +211,11 @@ export default function GalleryLayout({ children }: { children: React.ReactNode 
                 </aside>
 
                 {/* Main Content */}
-                <main className="flex-1 overflow-y-auto bg-background/50 flex flex-col">
-                    <div className="mx-auto max-w-5xl w-full p-8 lg:p-12 flex-1">
-                        {children}
+                <main className="flex-1 overflow-y-auto bg-background flex flex-col">
+                    <div className="mx-auto max-w-5xl w-full p-8 lg:p-12 flex-1 flex flex-col">
+                        <div className="flex-1">
+                            {children}
+                        </div>
                     </div>
 
                     {/* Footer inside main */}
