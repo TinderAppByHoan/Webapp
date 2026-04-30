@@ -20,7 +20,8 @@ import {
     CreditCard,
     PanelTop,
     Calendar as CalendarIcon,
-    CheckSquare
+    CheckSquare,
+    Tag
 } from "lucide-react";
 import { CustomButton } from "@/components/ui";
 import { Switch, cn } from "@heroui/react";
@@ -42,6 +43,7 @@ const sidebarItems = [
     { name: "Card", href: "/gallery/card", icon: CreditCard },
     { name: "Checkbox", href: "/gallery/checkbox", icon: CheckSquare },
     { name: "Checkbox Group", href: "/gallery/checkbox-group", icon: Layers },
+    { name: "Chip", href: "/gallery/chip", icon: Tag },
     { name: "Navbar", href: "/gallery/navbar", icon: PanelTop },
 ];
 
