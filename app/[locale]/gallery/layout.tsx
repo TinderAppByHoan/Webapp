@@ -21,7 +21,8 @@ import {
     PanelTop,
     Calendar as CalendarIcon,
     CheckSquare,
-    Tag
+    Tag,
+    XCircle
 } from "lucide-react";
 import { CustomButton } from "@/components/ui";
 import { Switch, cn } from "@heroui/react";
@@ -44,6 +45,7 @@ const sidebarItems = [
     { name: "Checkbox", href: "/gallery/checkbox", icon: CheckSquare },
     { name: "Checkbox Group", href: "/gallery/checkbox-group", icon: Layers },
     { name: "Chip", href: "/gallery/chip", icon: Tag },
+    { name: "Close Button", href: "/gallery/close-button", icon: XCircle },
     { name: "Navbar", href: "/gallery/navbar", icon: PanelTop },
 ];
 
