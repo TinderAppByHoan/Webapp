@@ -46,6 +46,7 @@ const sidebarItems = [
     { name: "Checkbox Group", href: "/gallery/checkbox-group", icon: Layers },
     { name: "Chip", href: "/gallery/chip", icon: Tag },
     { name: "Close Button", href: "/gallery/close-button", icon: XCircle },
+    { name: "ComboBox", href: "/gallery/combobox", icon: Search },
     { name: "Navbar", href: "/gallery/navbar", icon: PanelTop },
 ];
 
