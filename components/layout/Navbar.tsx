@@ -2,14 +2,14 @@
 
 import { useState } from "react";
 import {
-  Link,
   Avatar,
   Dropdown,
 } from "@heroui/react";
+import { Link } from "@/lib/i18n-navigation";
 import { Menu, X } from "lucide-react";
 
-export const AppNavbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <nav className="sticky top-0 z-50 w-full glass border-b border-pink-100/50 px-6 py-3">
@@ -39,56 +39,68 @@ export const AppNavbar = () => {
           <div className="hidden sm:block">
             <Link href="#" className="text-sm font-medium">Login</Link>
           </div>
-
           <Dropdown>
             <Dropdown.Trigger>
               <Avatar
-                className="transition-transform cursor-pointer"
+                className="transition-transform"
+                color="accent"
                 size="sm"
               >
-                <Avatar.Image src="https://i.pravatar.cc/150?u=a042581f4e29026704d" alt="Rose" />
-                <Avatar.Fallback>RH</Avatar.Fallback>
+                <Avatar.Image 
+                  src="https://i.pravatar.cc/150?u=a042581f4e29026704d" 
+                  alt="Jason Hughes" 
+                />
+                <Avatar.Fallback>JH</Avatar.Fallback>
               </Avatar>
             </Dropdown.Trigger>
-            <Dropdown.Popover placement="bottom end">
-              <Dropdown.Menu aria-label="Profile Actions">
-                <Dropdown.Item key="profile" className="h-14 gap-2 text-zinc-800">
-                  <p className="font-semibold">Signed in as</p>
-                  <p className="font-semibold text-primary">rose@example.com</p>
-                </Dropdown.Item>
-                <Dropdown.Item key="settings" className="text-zinc-800">My Profile</Dropdown.Item>
-                <Dropdown.Item key="analytics" className="text-zinc-800">Analytics</Dropdown.Item>
-                <Dropdown.Item key="logout" variant="danger">
-                  Log Out
-                </Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown.Popover>
+            <Dropdown.Menu aria-label="Profile Actions">
+              <Dropdown.Item key="profile" className="h-14 gap-2">
+                <p className="font-semibold">Signed in as</p>
+                <p className="font-semibold">zoey@example.com</p>
+              </Dropdown.Item>
+              <Dropdown.Item key="settings">My Settings</Dropdown.Item>
+              <Dropdown.Item key="team_settings">Team Settings</Dropdown.Item>
+              <Dropdown.Item key="analytics">Analytics</Dropdown.Item>
+              <Dropdown.Item key="system">System</Dropdown.Item>
+              <Dropdown.Item key="configurations">Configurations</Dropdown.Item>
+              <Dropdown.Item key="help_and_feedback">Help & Feedback</Dropdown.Item>
+              <Dropdown.Item key="logout" className="text-danger">
+                Log Out
+              </Dropdown.Item>
+            </Dropdown.Menu>
           </Dropdown>
 
-          {/* Mobile Menu Toggle */}
-          <button
-            className="md:hidden p-2 text-zinc-600 hover:text-primary transition-colors"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+          {/* Mobile menu button */}
+          <div className="md:hidden flex items-center">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="text-gray-500 hover:text-primary focus:outline-none"
+            >
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      {isMenuOpen && (
-        <div className="md:hidden pt-4 pb-2 space-y-2 animate-in fade-in slide-in-from-top-4">
-          <Link href="#" className="block px-4 py-2 text-primary font-medium bg-pink-50/50 rounded-lg">
+      {/* Mobile Navigation */}
+      {isOpen && (
+        <div className="md:hidden mt-4 pb-4 space-y-4 animate-in slide-in-from-top-4 duration-300">
+          <Link href="#" className="block text-base font-medium text-primary">
             Feed
           </Link>
-          <Link href="#" className="block px-4 py-2 font-medium hover:text-primary">
+          <Link href="#" className="block text-base font-medium hover:text-primary">
             Discover
           </Link>
-          <Link href="/gallery" className="block px-4 py-2 font-medium hover:text-primary">
+          <Link href="/gallery" className="block text-base font-medium hover:text-primary">
             Gallery
+          </Link>
+          <Link href="#" className="block text-base font-medium hover:text-primary pt-2 border-t border-pink-50">
+            Login
           </Link>
         </div>
       )}
     </nav>
   );
 };
+
+export default Navbar;

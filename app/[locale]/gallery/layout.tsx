@@ -18,7 +18,9 @@ import {
     LayoutGrid,
     ChevronsLeft,
     CreditCard,
-    PanelTop
+    PanelTop,
+    Calendar as CalendarIcon,
+    CheckSquare
 } from "lucide-react";
 import { CustomButton } from "@/components/ui";
 import { Switch, cn } from "@heroui/react";
@@ -36,7 +38,9 @@ const sidebarItems = [
     { name: "Breadcrumbs", href: "/gallery/breadcrumbs", icon: Layers },
     { name: "Button", href: "/gallery/button", icon: MousePointer2 },
     { name: "Button Group", href: "/gallery/button-group", icon: Layout },
+    { name: "Calendar", href: "/gallery/calendar", icon: CalendarIcon },
     { name: "Card", href: "/gallery/card", icon: CreditCard },
+    { name: "Checkbox", href: "/gallery/checkbox", icon: CheckSquare },
     { name: "Navbar", href: "/gallery/navbar", icon: PanelTop },
 ];
 
@@ -57,10 +61,11 @@ export default function GalleryLayout({ children }: { children: React.ReactNode 
     }, [theme]);
 
     return (
-        <div className="h-screen overflow-hidden bg-background transition-colors duration-500 flex flex-col">
+        /* Ép chặt layout vào 100vh và khóa cuộn ở tầng này */
+        <div className="fixed inset-0 h-screen w-screen overflow-hidden bg-background transition-colors duration-500 flex flex-col z-[9999]">
             {/* Header */}
             <header
-                className="flex-none sticky top-0 z-50 w-full border-b border-border-soft bg-surface/80 backdrop-blur-xl transition-all duration-500">
+                className="flex-none sticky top-0 z-[100] w-full border-b border-border-soft bg-surface/80 backdrop-blur-xl transition-all duration-500">
                 <div className="mx-auto flex h-16 w-full items-center justify-between px-6">
                     {/* Left: Logo & Toggle */}
                     <div className="flex items-center gap-4">
@@ -125,21 +130,12 @@ export default function GalleryLayout({ children }: { children: React.ReactNode 
                         </Switch>
 
                         <div className="h-6 w-px bg-border-soft" />
-                        <div className="flex items-center gap-3">
-                            <div className="hidden text-right md:block">
-                                <p className="text-sm font-semibold text-zinc-800 dark:text-zinc-100 leading-tight">Hoàn
-                                    Xuân</p>
-                                <p className="text-[10px] font-medium text-muted uppercase tracking-wider">
-                                    Premium Member
-                                </p>
-                            </div>
-                            <CustomAvatar
-                                size="md"
-                                color="accent"
-                                fallback="XH"
-                                className="ring-2 ring-border-soft"
-                            />
-                        </div>
+                        <CustomAvatar
+                            size="md"
+                            color="accent"
+                            fallback="XH"
+                            className="ring-2 ring-border-soft"
+                        />
                     </div>
                 </div>
             </header>
@@ -148,22 +144,19 @@ export default function GalleryLayout({ children }: { children: React.ReactNode 
                 {/* Sidebar */}
                 <aside
                     className={cn(
-                        "fixed inset-y-16 left-0 z-40 w-64 border-r border-border-soft bg-surface transition-all duration-300 lg:static lg:h-[calc(100vh-64px)] flex flex-col",
+                        "fixed inset-y-16 left-0 z-40 w-64 border-r border-border-soft bg-surface transition-all duration-300 lg:static lg:h-full flex flex-col",
                         isSidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0 lg:w-0 lg:border-none lg:opacity-0 overflow-hidden"
                     )}
                 >
-                    {/* Sidebar Header Controls */}
                     <div className="flex-none flex items-center justify-between px-6 py-5 border-b border-border-soft/50 mb-2">
                         <Link
                             href="/gallery"
                             className={cn(
-                                "flex items-center gap-2.5 text-[11px] font-bold uppercase tracking-[0.1em] transition-all",
-                                pathname === "/gallery"
-                                    ? "text-primary bg-pink-50 dark:bg-pink-500/10 px-3 py-1.5 rounded-lg"
-                                    : "text-muted hover:text-zinc-800 dark:hover:text-zinc-200"
+                                "flex items-center gap-2.5 text-[11px] font-bold uppercase tracking-[0.1em]",
+                                pathname === "/gallery" ? "text-primary" : "text-muted"
                             )}
                         >
-                            <LayoutGrid size={14} className={pathname === "/gallery" ? "animate-pulse" : ""} />
+                            <LayoutGrid size={14} />
                             Gallery Overview
                         </Link>
                         <CustomButton
@@ -171,17 +164,13 @@ export default function GalleryLayout({ children }: { children: React.ReactNode 
                             variant="ghost"
                             size="sm"
                             onClick={() => setIsSidebarOpen(false)}
-                            className="bg-zinc-50 dark:bg-zinc-800 border border-border-soft rounded-xl text-muted hover:text-primary transition-all"
-                            title="Collapse Sidebar"
+                            className="bg-zinc-50 dark:bg-zinc-800"
                         >
                             <ChevronsLeft size={18} />
                         </CustomButton>
                     </div>
 
-                    <nav className="flex-1 overflow-y-hidden hover:overflow-y-auto p-4 pt-2 space-y-1 scrollbar-thin scrollbar-thumb-zinc-200 dark:scrollbar-thumb-zinc-800">
-                        <p className="px-3 py-2 text-[10px] font-bold text-muted uppercase tracking-[0.2em] mb-2">
-                            Components
-                        </p>
+                    <nav className="flex-1 overflow-y-auto p-4 pt-2 space-y-1 scrollbar-hide">
                         {sidebarItems.map((item) => {
                             const isActive = pathname === item.href;
                             return (
@@ -190,48 +179,29 @@ export default function GalleryLayout({ children }: { children: React.ReactNode 
                                     href={item.href}
                                     className={cn(
                                         "flex items-center justify-between group px-3 py-2.5 rounded-xl transition-all duration-200",
-                                        isActive
-                                            ? "bg-pink-50 text-primary dark:bg-pink-500/10"
-                                            : "text-zinc-600 dark:text-zinc-400 hover:bg-surface-soft hover:text-zinc-900 dark:hover:text-zinc-100"
+                                        isActive ? "bg-pink-50 text-primary dark:bg-pink-500/10" : "text-zinc-600 dark:text-zinc-400 hover:bg-surface-soft"
                                     )}
                                 >
                                     <div className="flex items-center gap-3">
-                                        <item.icon className={cn(
-                                            "size-4.5 transition-colors",
-                                            isActive ? "text-primary" : "text-muted group-hover:text-zinc-600 dark:group-hover:text-zinc-300"
-                                        )} />
+                                        <item.icon className="size-4.5" />
                                         <span className="text-sm font-medium">{item.name}</span>
                                     </div>
-                                    {isActive && (
-                                        <motion.div layoutId="active-indicator">
-                                            <ChevronRight size={14} className="text-primary" />
-                                        </motion.div>
-                                    )}
+                                    {isActive && <ChevronRight size={14} className="text-primary" />}
                                 </Link>
                             );
                         })}
                     </nav>
                 </aside>
 
-                {/* Main Content */}
-                <main className="flex-1 overflow-y-auto bg-background flex flex-col">
-                    <div className="mx-auto max-w-5xl w-full p-8 lg:p-12 flex-1 flex flex-col">
-                        <div className="flex-1">
-                            {children}
-                        </div>
+                {/* Main Content: CHỈ CÓ DUY NHẤT VÙNG NÀY ĐƯỢC CUỘN */}
+                <main className="flex-1 overflow-y-auto bg-background flex flex-col relative z-0">
+                    <div className="mx-auto max-w-5xl w-full p-8 lg:p-12">
+                        {children}
                     </div>
-
-                    {/* Footer inside main */}
                     <footer className="mt-auto border-t border-border-soft bg-surface py-8">
-                        <div
-                            className="mx-auto max-w-5xl px-8 flex flex-col md:flex-row items-center justify-between gap-4">
-                            <div className="flex items-center gap-2 text-muted">
-                                <Flame size={16} className="text-primary" />
-                                <span className="text-xs font-medium">Tinder Design System v3.0</span>
-                            </div>
-                            <p className="text-[10px] text-muted uppercase tracking-wider font-semibold">
-                                Crafted with love for Gia Đình Social
-                            </p>
+                        <div className="mx-auto max-w-5xl px-8 flex justify-between items-center text-muted text-xs">
+                            <span>Tinder Design System v3.0</span>
+                            <span className="uppercase tracking-widest font-bold">Gia Đình Social</span>
                         </div>
                     </footer>
                 </main>

@@ -1,12 +1,12 @@
+import Navbar from "@/components/layout/Navbar";
 import { Button, Card, Avatar } from "@heroui/react";
-import { AppNavbar } from "@/components/layout/Navbar";
 import { Heart, MessageCircle, Share2, MoreHorizontal } from "lucide-react";
 import Image from "next/image";
 
 export default function Home() {
   return (
     <div className="min-h-screen flex flex-col bg-[#fffcfd]">
-      <AppNavbar />
+      <Navbar />
 
       <main className="flex-1 max-w-7xl mx-auto w-full px-4 py-8 grid grid-cols-1 md:grid-cols-12 gap-8">
         {/* Sidebar Left - Profile Info (Hidden on mobile) */}
