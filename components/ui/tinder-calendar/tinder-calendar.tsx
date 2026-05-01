@@ -109,15 +109,12 @@ const TinderCalendar = React.forwardRef<HTMLDivElement, TinderCalendarProps>(
       const monthLabel = new Intl.DateTimeFormat(locale, { month: "long", year: "numeric" }).format(monthDate.toDate(getLocalTimeZone()));
 
       return (
-        <div key={index} className="flex flex-col space-y-5">
+        <div key={index} className="flex flex-col space-y-3">
           <div className="flex items-center justify-between px-1">
             <div className="flex flex-col">
-              <span className="text-[10px] font-black uppercase tracking-[0.2em] text-pink-300 dark:text-pink-500/60 leading-none mb-1">
-                {index === 0 ? "Lịch trình" : "Tiếp theo"}
-              </span>
               <button 
                 onClick={() => index === 0 && setShowPicker(!showPicker)}
-                className="flex items-center gap-2 text-lg font-black text-zinc-900 dark:text-zinc-50 capitalize hover:text-primary transition-colors"
+                className="flex items-center gap-2 text-sm font-bold text-zinc-900 dark:text-zinc-50 capitalize hover:text-primary transition-colors"
               >
                 {monthLabel}
                 {index === 0 && <ChevronDown size={16} className={cn("transition-transform", showPicker && "rotate-180")} />}
@@ -126,8 +123,8 @@ const TinderCalendar = React.forwardRef<HTMLDivElement, TinderCalendarProps>(
             
             {index === visibleMonths - 1 && !showPicker && (
               <div className="flex gap-2">
-                <button type="button" onClick={prevMonth} className="size-10 rounded-2xl flex items-center justify-center bg-pink-50/50 dark:bg-pink-500/5 hover:bg-primary hover:text-white text-primary transition-all"><ChevronLeft size={20} strokeWidth={3} /></button>
-                <button type="button" onClick={nextMonth} className="size-10 rounded-2xl flex items-center justify-center bg-pink-50/50 dark:bg-pink-500/5 hover:bg-primary hover:text-white text-primary transition-all"><ChevronRight size={20} strokeWidth={3} /></button>
+                <button type="button" onClick={prevMonth} className="size-8 rounded-xl flex items-center justify-center bg-pink-50/50 dark:bg-pink-500/5 hover:bg-primary hover:text-white text-primary transition-all"><ChevronLeft size={16} strokeWidth={3} /></button>
+                <button type="button" onClick={nextMonth} className="size-8 rounded-xl flex items-center justify-center bg-pink-50/50 dark:bg-pink-500/5 hover:bg-primary hover:text-white text-primary transition-all"><ChevronRight size={16} strokeWidth={3} /></button>
               </div>
             )}
           </div>
@@ -176,10 +173,10 @@ const TinderCalendar = React.forwardRef<HTMLDivElement, TinderCalendarProps>(
             )}
 
             <div className="flex flex-col">
-              <div className="grid grid-cols-7 mb-2 text-center text-[10px] font-black text-zinc-400 uppercase tracking-widest">
-                {weekdayNames.map(day => <div key={day} className="h-10 flex items-center justify-center">{day}</div>)}
+              <div className="grid grid-cols-7 gap-x-6 justify-items-center mb-1 text-center text-[10px] font-black text-zinc-400 uppercase tracking-widest">
+                {weekdayNames.map(day => <div key={day} className="h-8 flex items-center justify-center">{day}</div>)}
               </div>
-              <div className="grid grid-cols-7 gap-1">
+              <div className="grid grid-cols-7 gap-x-6 gap-y-1 justify-items-center">
                 {generateMonthGrid(monthDate).map((date, idx) => {
                   const isSelected = activeValue && isSameDay(date, activeValue);
                   const isTodayDate = isSameDay(date, now);
@@ -196,8 +193,8 @@ const TinderCalendar = React.forwardRef<HTMLDivElement, TinderCalendarProps>(
                       disabled={isDisabled || isInvalid || isReadOnly}
                       onClick={() => handleValueChange(date)}
                       className={cn(
-                        "size-10 rounded-2xl flex items-center justify-center text-sm font-bold transition-all",
-                        isSelected ? "bg-gradient-to-br from-primary to-rose-400 text-white shadow-lg z-10 scale-110" : "hover:bg-pink-50 dark:hover:bg-pink-500/10 text-zinc-700 dark:text-zinc-300",
+                        "size-9 rounded-xl flex items-center justify-center text-sm font-bold transition-all relative",
+                        isSelected ? "bg-gradient-to-br from-primary to-rose-400 text-white shadow-lg z-10 scale-105" : "hover:bg-pink-50 dark:hover:bg-pink-500/10 text-zinc-700 dark:text-zinc-300",
                         isOutsideMonth && !isSelected && "text-zinc-200 dark:text-zinc-800",
                         isTodayDate && !isSelected && "text-primary ring-2 ring-pink-100",
                         (isInvalid || isDisabled) && "opacity-20 cursor-not-allowed grayscale",
@@ -220,7 +217,7 @@ const TinderCalendar = React.forwardRef<HTMLDivElement, TinderCalendarProps>(
       <div
         ref={ref}
         className={cn(
-          "inline-flex flex-col gap-6 p-6 rounded-[3rem] bg-white dark:bg-zinc-950 border border-pink-100/50 dark:border-pink-500/10 shadow-[0_30px_70px_rgba(255,182,193,0.15)] transition-all",
+          "inline-flex flex-col gap-4 p-5 rounded-[2.5rem] bg-white dark:bg-zinc-950 border border-pink-100/50 dark:border-pink-500/10 shadow-[0_20px_50px_rgba(255,182,193,0.12)] transition-all",
           isDisabled && "opacity-50 pointer-events-none grayscale",
           className
         )}
@@ -233,7 +230,7 @@ const TinderCalendar = React.forwardRef<HTMLDivElement, TinderCalendarProps>(
                 type="button"
                 onClick={() => handlePresetClick(p.id as any)}
                 className={cn(
-                  "flex-1 py-2.5 rounded-xl text-[12px] font-bold transition-all",
+                  "flex-1 py-2 rounded-lg text-[11px] font-bold transition-all",
                   activeValue && ((p.id === "today" && isSameDay(activeValue, now)) || (p.id === "week" && isSameDay(activeValue, getMondayOf(now))))
                   ? "bg-white dark:bg-zinc-800 text-primary shadow-sm" : "text-zinc-500"
                 )}

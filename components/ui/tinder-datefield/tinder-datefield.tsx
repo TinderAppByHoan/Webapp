@@ -23,6 +23,8 @@ export interface TinderDateFieldProps {
   startContent?: React.ReactNode;
   endContent?: React.ReactNode;
   fullWidth?: boolean;
+  hideLabel?: boolean;
+  hideDivider?: boolean;
 }
 
 export const TinderDateField = ({
@@ -32,10 +34,10 @@ export const TinderDateField = ({
   variant = "default",
   labelPlacement = "inside",
   size = "md",
-  isDisabled,
+  isDisabled = false,
   isInvalid,
   isRequired,
-  isReadOnly,
+  isReadOnly = false,
   className,
   defaultValue,
   value,
@@ -43,6 +45,8 @@ export const TinderDateField = ({
   startContent,
   endContent,
   fullWidth = false,
+  hideLabel = false,
+  hideDivider = false,
 }: TinderDateFieldProps) => {
   // Parsing initial values
   const parseISO = (iso?: string) => {
@@ -68,7 +72,7 @@ export const TinderDateField = ({
 
     if (d && (day < 1 || day > 31)) return false;
     if (m && (month < 1 || month > 12)) return false;
-    
+
     // Full date validation when all fields are filled
     if (d.length === 2 && m.length === 2 && y.length === 4) {
       const dateObj = new Date(year, month - 1, day);
@@ -86,7 +90,7 @@ export const TinderDateField = ({
 
     // Only allow numbers
     let cleanVal = val.replace(/\D/g, "").slice(0, maxLen);
-    
+
     // Quick validation for obvious errors while typing
     const numVal = parseInt(cleanVal);
     if (field === "day" && numVal > 31) cleanVal = "31";
@@ -119,16 +123,17 @@ export const TinderDateField = ({
 
   // Variant Styles
   const variantClasses = {
-    default: "bg-white dark:bg-zinc-950 border-transparent shadow-sm",
-    bordered: "bg-white dark:bg-zinc-950 border-zinc-200 dark:border-zinc-700 hover:border-zinc-300 dark:hover:border-zinc-600",
-    flat: "bg-zinc-100/50 dark:bg-zinc-800/50 border-transparent",
-    faded: "bg-zinc-50 dark:bg-zinc-900 border-zinc-100 dark:border-zinc-800",
+    default: "bg-white dark:bg-zinc-900 border-2 border-zinc-100 dark:border-zinc-800 rounded-2xl px-4 shadow-sm",
+    bordered: "bg-transparent border-2 border-zinc-200 dark:border-zinc-700 hover:border-zinc-300 dark:hover:border-zinc-600 rounded-2xl px-4",
+    flat: "bg-white dark:bg-zinc-950 border-none rounded-none px-0 shadow-none",
+    faded: "bg-zinc-50 dark:bg-zinc-900 border-2 border-zinc-100 dark:border-zinc-800 rounded-2xl px-4",
+    ghost: "bg-transparent border-none shadow-none rounded-none px-0",
   };
 
   const sizeClasses = {
-    sm: "h-10 text-xs px-3 rounded-xl",
-    md: "h-12 text-sm px-4 rounded-2xl",
-    lg: "h-14 text-base px-5 rounded-[1.5rem]",
+    sm: "h-10 text-xs",
+    md: "h-12 text-sm",
+    lg: "h-14 text-base",
   };
 
   const isOutsideLeft = labelPlacement === "outside-left";
@@ -142,7 +147,7 @@ export const TinderDateField = ({
     )}>
       {label && labelPlacement !== "inside" && (
         <label className={cn(
-          "font-black tracking-tight text-black dark:text-white uppercase italic leading-none ml-1 shrink-0",
+          "font-black tracking-tight text-zinc-800 dark:text-zinc-100 uppercase italic leading-none ml-1 shrink-0",
           size === "sm" ? "text-[10px]" : "text-xs"
         )}>
           {label} {isRequired && <span className="text-primary">*</span>}
@@ -152,11 +157,15 @@ export const TinderDateField = ({
       <div className="flex-1 flex flex-col gap-1.5">
         <div
           className={cn(
-            "relative flex items-center border-2 transition-all duration-300",
+            "relative flex items-center transition-all duration-300",
             variantClasses[variant],
             sizeClasses[size],
-            isFocused ? "border-primary shadow-lg shadow-primary/10 bg-white dark:bg-zinc-950" : "hover:bg-white dark:hover:bg-zinc-950",
-            shouldShowError ? "border-rose-500 bg-rose-50/30" : "",
+            isFocused ? (
+              (variant === "flat" || variant === "ghost")
+                ? ""
+                : "border-primary shadow-lg shadow-primary/10 bg-white dark:bg-zinc-950"
+            ) : "",
+            shouldShowError ? ((variant === "flat" || variant === "ghost") ? "" : "border-rose-500 bg-rose-50/30") : "",
             isDisabled ? "opacity-40 cursor-not-allowed" : "cursor-text"
           )}
           onClick={(e) => {
@@ -164,8 +173,8 @@ export const TinderDateField = ({
             dayRef.current?.focus();
           }}
         >
-          <div className="flex flex-col flex-1">
-            {label && labelPlacement === "inside" && (
+          <div className={cn("flex flex-col flex-1", !hideLabel && labelPlacement === "inside" && label && "pt-1.5")}>
+            {label && labelPlacement === "inside" && !hideLabel && (
               <span className="text-[10px] font-black uppercase italic text-black dark:text-white leading-none mb-0.5 tracking-widest">
                 {label}
               </span>
@@ -173,7 +182,7 @@ export const TinderDateField = ({
 
             <div className="flex items-center gap-2">
               {startContent && <div className="text-zinc-400 shrink-0">{startContent}</div>}
-              
+
               <div className="flex items-center font-bold text-zinc-700 dark:text-zinc-200 gap-2 italic flex-nowrap min-w-max">
                 <input
                   ref={dayRef}
@@ -214,6 +223,19 @@ export const TinderDateField = ({
 
               {endContent && <div className="ml-auto text-zinc-400 shrink-0">{endContent}</div>}
             </div>
+
+            {/* Divider for Flat variant */}
+            {variant === "flat" && !hideDivider && (
+              <motion.div
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: isFocused || shouldShowError ? 1 : 0 }}
+                transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                className={cn(
+                  "absolute bottom-0 left-0 right-0 h-[2px] origin-center z-10",
+                  shouldShowError ? "bg-rose-500" : "bg-zinc-900 dark:bg-white"
+                )}
+              />
+            )}
           </div>
         </div>
 
