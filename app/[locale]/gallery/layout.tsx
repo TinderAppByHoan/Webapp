@@ -22,7 +22,8 @@ import {
     Calendar as CalendarIcon,
     CheckSquare,
     Tag,
-    XCircle
+    XCircle,
+    Calendar
 } from "lucide-react";
 import { CustomButton } from "@/components/ui";
 import { Switch, cn } from "@heroui/react";
@@ -47,6 +48,7 @@ const sidebarItems = [
     { name: "Chip", href: "/gallery/chip", icon: Tag },
     { name: "Close Button", href: "/gallery/close-button", icon: XCircle },
     { name: "ComboBox", href: "/gallery/combobox", icon: Search },
+    { name: "Date Field", href: "/gallery/date-field", icon: Calendar },
     { name: "Navbar", href: "/gallery/navbar", icon: PanelTop },
 ];
 

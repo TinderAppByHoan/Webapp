@@ -2,7 +2,7 @@
 @import "@heroui/styles";
 
 @theme {
-  --font-sans: "Outfit", var(--font-geist-sans), ui-sans-serif, system-ui;
+  --font-sans: var(--font-poppins), var(--font-geist-sans), ui-sans-serif, system-ui;
   --color-primary: #ff85a1;
   --color-secondary: #b794f4;
   --color-tinder: #ff85a1;

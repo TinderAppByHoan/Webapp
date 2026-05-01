@@ -14,7 +14,7 @@
 - **Visual Style:** Implement "Glassmorphism" using `bg-white/50` and `backdrop-blur-sm`.
 - **Softness:** Use large border-radii (`rounded-3xl`) for a gentle, approachable feel.
 - **Animations:** Every interaction must feel "alive" using Framer Motion (subtle hover, scale, and fade effects).
-- **Typography:** Prioritize modern, clean fonts (e.g., Outfit or Inter) with proper hierarchy.
+- **Typography:** Prioritize modern, clean fonts (e.g., Poppins or Inter) with proper hierarchy.
 
 ## 🛠 Next.js & TS Engineering Standards
 

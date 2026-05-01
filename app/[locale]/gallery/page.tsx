@@ -20,7 +20,7 @@ export default function GalleryOverview() {
 
                 <h1 className="text-5xl font-extrabold text-zinc-900 dark:text-zinc-50 tracking-tight leading-tight">
                     {t.rich("heroTitle", {
-                        primary: (chunks) => <span className="text-primary">Gia Đình</span>
+                        primary: (chunks) => <span className="text-primary">{chunks}</span>
                     })}
                 </h1>
 
