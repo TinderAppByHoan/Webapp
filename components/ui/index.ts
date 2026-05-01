@@ -8,3 +8,4 @@ export { default as CustomBreadcrumbs } from "./tinder-breadcrumb/breadcrumbs";
 export { default as CustomButton } from "./tinder-button/button";
 export * from "./tinder-buttonGroup/button-group";
 export * from "./tinder-card/card";
+export { TinderDateField } from "./tinder-datefield/tinder-datefield";

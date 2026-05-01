@@ -24,6 +24,7 @@ import {
     Tag,
     XCircle,
     Calendar,
+    ChevronDown,
 } from "lucide-react";
 import { CustomButton } from "@/components/ui";
 import { Switch, cn } from "@heroui/react";
@@ -50,6 +51,7 @@ const sidebarItems = [
     { name: "ComboBox", href: "/gallery/combobox", icon: Search },
     { href: "/gallery/date-field", name: "Date Field", icon: Calendar },
     { href: "/gallery/date-picker", name: "Date Picker", icon: Calendar },
+    { name: "Dropdown", href: "/gallery/dropdown", icon: ChevronDown },
     { name: "Navbar", href: "/gallery/navbar", icon: PanelTop },
 ];
 
