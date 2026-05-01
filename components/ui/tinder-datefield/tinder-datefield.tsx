@@ -119,8 +119,8 @@ export const TinderDateField = ({
 
   // Variant Styles
   const variantClasses = {
-    default: "bg-zinc-100 dark:bg-zinc-800 border-transparent",
-    bordered: "bg-transparent border-zinc-200 dark:border-zinc-700 hover:border-zinc-300 dark:hover:border-zinc-600",
+    default: "bg-white dark:bg-zinc-950 border-transparent shadow-sm",
+    bordered: "bg-white dark:bg-zinc-950 border-zinc-200 dark:border-zinc-700 hover:border-zinc-300 dark:hover:border-zinc-600",
     flat: "bg-zinc-100/50 dark:bg-zinc-800/50 border-transparent",
     faded: "bg-zinc-50 dark:bg-zinc-900 border-zinc-100 dark:border-zinc-800",
   };
@@ -155,7 +155,7 @@ export const TinderDateField = ({
             "relative flex items-center border-2 transition-all duration-300",
             variantClasses[variant],
             sizeClasses[size],
-            isFocused ? "border-primary shadow-lg shadow-primary/10 bg-white dark:bg-zinc-950" : "",
+            isFocused ? "border-primary shadow-lg shadow-primary/10 bg-white dark:bg-zinc-950" : "hover:bg-white dark:hover:bg-zinc-950",
             shouldShowError ? "border-rose-500 bg-rose-50/30" : "",
             isDisabled ? "opacity-40 cursor-not-allowed" : "cursor-text"
           )}
@@ -184,7 +184,7 @@ export const TinderDateField = ({
                   onFocus={() => setIsFocused(true)}
                   onBlur={() => setIsFocused(false)}
                   onChange={(e) => handleInputChange("day", e.target.value, 2)}
-                  className="w-7 h-6 bg-transparent outline-none placeholder:text-zinc-500 dark:placeholder:text-zinc-400 text-center hover:bg-zinc-100 dark:hover:bg-zinc-800 focus:bg-primary/10 focus:text-primary rounded-lg transition-all duration-200 tabular-nums p-0 shrink-0"
+                  className="w-7 h-6 bg-transparent outline-none placeholder:text-zinc-500 dark:placeholder:text-zinc-400 text-center focus:bg-primary/20 focus:text-primary rounded-lg transition-all duration-200 tabular-nums p-0 shrink-0"
                 />
                 <span className="text-zinc-300 dark:text-zinc-600 shrink-0">/</span>
                 <input
@@ -196,7 +196,7 @@ export const TinderDateField = ({
                   onFocus={() => setIsFocused(true)}
                   onBlur={() => setIsFocused(false)}
                   onChange={(e) => handleInputChange("month", e.target.value, 2)}
-                  className="w-8 h-6 bg-transparent outline-none placeholder:text-zinc-500 dark:placeholder:text-zinc-400 text-center hover:bg-zinc-100 dark:hover:bg-zinc-800 focus:bg-primary/10 focus:text-primary rounded-lg transition-all duration-200 tabular-nums p-0 shrink-0"
+                  className="w-8 h-6 bg-transparent outline-none placeholder:text-zinc-500 dark:placeholder:text-zinc-400 text-center focus:bg-primary/20 focus:text-primary rounded-lg transition-all duration-200 tabular-nums p-0 shrink-0"
                 />
                 <span className="text-zinc-300 dark:text-zinc-600 shrink-0">/</span>
                 <input
@@ -208,7 +208,7 @@ export const TinderDateField = ({
                   onFocus={() => setIsFocused(true)}
                   onBlur={() => setIsFocused(false)}
                   onChange={(e) => handleInputChange("year", e.target.value, 4)}
-                  className="w-10 h-6 bg-transparent outline-none placeholder:text-zinc-500 dark:placeholder:text-zinc-400 text-center hover:bg-zinc-100 dark:hover:bg-zinc-800 focus:bg-primary/10 focus:text-primary rounded-lg transition-all duration-200 tabular-nums p-0 shrink-0"
+                  className="w-10 h-6 bg-transparent outline-none placeholder:text-zinc-500 dark:placeholder:text-zinc-400 text-center focus:bg-primary/20 focus:text-primary rounded-lg transition-all duration-200 tabular-nums p-0 shrink-0"
                 />
               </div>
 
