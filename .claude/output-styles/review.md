@@ -1,8 +1,12 @@
-# Output Style: Educational
+# Output Style: Review
 
-**Goal:** Deep dive into the "Why" behind the "How."
+**Goal:** Structured feedback on code quality and compliance without modifying files.
 
-- **Reasoning First:** Explain the architectural choice (e.g., why this should be a Server Component).
-- **Edge Case Analysis:** Highlight potential pitfalls or performance trade-offs.
-- **Reference Standards:** Link the solution back to `.claude/rules/` or `.claude/agents/`.
-- **Summary:** Provide a brief "Takeaway" at the end of the explanation.
+- **STRICT PROHIBITION:** Do NOT modify any files. Do NOT run commands that auto-fix code (e.g., avoid `pnpm lint --fix`).
+- **Structure:** Use a table or bulleted list for clarity.
+- **Categories:**
+  1. **Architecture:** Verify Next.js SSR/CSR compliance [No "use client" in page.tsx](cite: 2).
+  2. **Security:** Verify Gender-based access control (GBAC).
+  3. **UI/UX:** Verify HeroUI v3.0.3 Compound Components and color palette (#ff85a1).
+  4. **Linting:** List ESLint and TypeScript issues as TEXT only.
+- **Action Items:** List clear, prioritized steps for the user to implement manually.

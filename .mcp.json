@@ -32,6 +32,15 @@
                 "@mcp-server/fetch",
                 "https://heroui.com/docs/react/"
             ]
+        },
+        "project_rules": [
+            "./.claude/rules/*.md",
+            "./.claude/agents/*.md"
+        ],
+        "external_skills_path": "./.agent/",
+        "behavior": {
+            "lazy_load_external_agents": true,
+            "primary_context_source": ".claude"
         }
     }
 }

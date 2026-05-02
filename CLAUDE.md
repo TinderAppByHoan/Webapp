@@ -4,6 +4,12 @@
 This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` before writing any code. Heed deprecation notices.
 <!-- END:nextjs-agent-rules -->
 
+## 🚦 Context Routing Rules
+
+- **Standard Requests:** If the prompt contains project keywords (e.g., "Next.js", "HeroUI", "UI/UX", "Social Network"), strictly prioritize documentation from `./.claude/`[cite: 1, 2, 7].
+- **Slash Commands (Antigravity):** ONLY scan the `./.agent/` directory when a command starts with `@` (e.g., `@brainstorming`, `@skill-name`).
+- **Conflict Resolution:** If a `@` command is used, instructions in `./.agent/` override standard rules for that specific response only.
+
 <!-- BEGIN:project-context -->
 # Project Context & Business Logic
 
