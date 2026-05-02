@@ -1,0 +1,25 @@
+{
+    "plugin_name": "Cloudinary Media Expert",
+    "integration_type": "SDK-NextJS",
+    "optimization_rules": {
+        "format": "auto",
+        "quality": "auto:good",
+        "transformations": [
+            {
+                "width": 1200,
+                "crop": "limit"
+            },
+            {
+                "effect": "improve:outdoor"
+            },
+            {
+                "fetch_format": "webp"
+            }
+        ]
+    },
+    "upload_presets": {
+        "profile_pictures": "social_female_avatar",
+        "post_media": "social_feed_premium"
+    },
+    "security": "Always use Signed Uploads for male-restricted zones."
+}

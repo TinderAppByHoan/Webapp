@@ -1,46 +1,51 @@
-# Claude Development Profile: Social Network Expert
+<!-- BEGIN:nextjs-agent-rules -->
+# This is NOT the Next.js you know
 
-## 🎭 Dual Role Definition
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` before writing any code. Heed deprecation notices.
+<!-- END:nextjs-agent-rules -->
 
-1. **Premium UI/UX Designer:** Specialist in feminine, modern, and high-end aesthetics. Your focus is on visual "wow" factors, glassmorphism, and fluid animations.
+<!-- BEGIN:project-context -->
+# Project Context & Business Logic
 
-2. **Senior Frontend Engineer:** Expert in Next.js 15+ and TypeScript. Your focus is on performance, clean architecture, and type-safe engineering.
+This is a **Social Network Web Application** inspired by platforms like Facebook, X, and Instagram. When generating code, designing UI components, or implementing business logic, all AI agents MUST adhere to the following core concepts:
 
----
+## 🛠 Tech Stack & Environment
 
-## 🎨 UI/UX Excellence Standards
+- **Package Manager:** `pnpm`
+- **Framework:** Next.js 15+ (App Router)
+- **UI System:** HeroUI v3.0.3 & Framer Motion
+- **Language:** TypeScript (Strict Mode)
 
-- **Feminine Palette:** Primary theme uses soft pinks (#FFF1F2 to #FB7185). Avoid generic colors.
-- **Visual Style:** Implement "Glassmorphism" using `bg-white/50` and `backdrop-blur-sm`.
-- **Softness:** Use large border-radii (`rounded-3xl`) for a gentle, approachable feel.
-- **Animations:** Every interaction must feel "alive" using Framer Motion (subtle hover, scale, and fade effects).
-- **Typography:** Prioritize modern, clean fonts (e.g., Poppins or Inter) with proper hierarchy.
+## 💻 Critical Commands
 
-## 🛠 Next.js & TS Engineering Standards
+- **Development:** `pnpm dev`
+- **Build:** `pnpm build`
+- **Linting:** `pnpm lint` (Must run before finalizing any task)
+- **Type Check:** `pnpm tsc`
 
-- **Component Pattern:** Strictly use **HeroUI v3.0.3** Compound Components (`Card.Body`, `Avatar.Image`).
-- **Next.js Architecture:**
-  - Maximize Server Components for data fetching.
-  - Use Client Components (`"use client"`) only for interactivity.
-  - Use Server Actions for all data mutations and form submissions.
-- **TypeScript:** 100% Type Safety. No `any`. Clear interfaces for all entities.
-- **Performance:**
-  - Mandatory use of `next/image` with `priority` and `sizes`.
-  - Optimized font loading and efficient re-rendering.
+## 📋 Operational Workflow (Mandatory)
 
-## 🔐 Project Context & Logic
+1. **Pre-flight Check:**
+   - **Immediately execute `chmod +x .claude/hooks/*.sh`** to ensure all automation scripts are executable.
+   - Read task requirements and examine `.eslintrc`.
+2. **Analyze Context:** Read task requirements and **thoroughly examine `.eslintrc`** or `eslint.config.js` to ensure compliance with local coding standards.
+3. **Explore & Propose:** Provide 2-3 technical approaches optimized for Next.js 15.
+4. **User Decision:** Wait for the user to select or refine the proposed solution.
+5. **Final Implementation Plan:** Document a detailed step-by-step plan. Ensure it bypasses potential linting errors.
+6. **Execution:** Modify or create code **ONLY** after the final plan is explicitly approved.
+7. **Quality Assurance:** Run `pnpm lint` and verify type safety. Fix all warnings; do not use `// eslint-disable`.
 
-- **Business Logic:** Strict Gender-Based Access Control (Female: Full / Male: Read-only).
-- **Security:** Always verify user gender before rendering action components (Like, Post, Follow).
-- **Reference:** Always adhere to the core rules in [AGENTS.md](./AGENTS.md).
+## 📐 Engineering Standards
 
----
+- **Component Pattern:** Utilize **HeroUI Compound Components** exclusively.
+- **Architecture:** Default to Server Components; use `"use client"` only when necessary for interactivity.
+- **Type Safety:** 100% TypeScript coverage. No `any` allowed.
+- **Business Logic:** Enforce "Gender-Based Access Control" (Female: Full Access / Male: Read-only).
 
-## 📋 Operational Workflow
+## 📂 Navigation & References
 
-1. **Explore & Propose:** For any task, analyze the requirements and propose 2-3 alternative solutions/options for the user to choose from.
-2. **User Decision:** Wait for the user to select an option or provide feedback.
-3. **Final Plan:** Once an option is chosen, present a detailed final implementation plan for the user's approval.
-4. **Execution:** ONLY proceed to edit code directly AFTER the user has explicitly approved the final plan.
-5. **Quality Check:** Ensure all unescaped quotes, missing props, and linting errors are fixed before completion.
-6. **Progress Tracking:** Update `CLAUDE.md` with current state after major feature completions.
+- **Agents & Roles:** [./.claude/agents/social-expert.md]
+- **Specific Rules:** [./.claude/rules/access-control.md]
+- **Response Style:** [./.claude/output-styles/terse.md]
+- **Next.js Architecture:** [./.claude/rules/nextjs-architecture.md]
+<!-- END:project-context -->

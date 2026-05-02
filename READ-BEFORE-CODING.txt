@@ -1,0 +1,8 @@
+1. Prompt ban đầu: Luôn nhắc AI: "Use Gemini 3 Flash for scanning and boilerplate, switch to Claude Thinking only for final architecture review."
+
+2. Context Pinning: Với Gemini 3 Flash, bạn có thể "pin" (ghim) các file quy tắc như .claude/rules/nextjs-architecture.md mà không sợ tốn diện tích bộ nhớ.
+
+3. Kích hoạt .claude/output-styles: thêm chuỗi 1 trong 3 chuỗi:
+- style: terse => AI trả về code
+- style: educational => AI viết bài giảng
+- style: review => AI trả về lỗi và báo cáo dưới dạng bảng
