@@ -4,10 +4,12 @@ import * as React from "react";
 import { Button } from "@heroui/react";
 import { cn } from "@/lib/utils";
 
-export type CustomButtonProps = Omit<React.ComponentPropsWithoutRef<typeof Button>, "variant"> &
-    Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "children"> & {
+export type CustomButtonProps = Omit<React.ComponentPropsWithoutRef<typeof Button>, "variant"> & {
     variant?: "primary" | "secondary" | "tinder" | "peach" | "success" | "warning" | "outline" | "ghost" | "danger" | "tertiary" | "danger-soft" | undefined;
     title?: string;
+    isLoading?: boolean;
+    color?: "default" | "primary" | "secondary" | "success" | "warning" | "danger" | undefined;
+    size?: "sm" | "md" | "lg" | undefined;
 };
 
 /**

@@ -65,7 +65,6 @@ export default function RegisterPage() {
               <RadioGroup 
                 orientation="horizontal" 
                 defaultValue="female"
-                color="danger"
               >
                 <Label>Giới tính</Label>
                 <div className="flex gap-4">

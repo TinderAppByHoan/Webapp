@@ -15,6 +15,7 @@ export interface TinderDatePickerProps {
   label?: React.ReactNode;
   description?: React.ReactNode;
   errorMessage?: React.ReactNode;
+  placeholder?: string;
   variant?: "default" | "bordered" | "flat" | "faded";
   labelPlacement?: "inside" | "outside" | "outside-left";
   size?: "sm" | "md" | "lg";
@@ -34,6 +35,7 @@ export const TinderDatePicker = ({
   label,
   description,
   errorMessage,
+  placeholder,
   variant = "default",
   labelPlacement = "inside",
   size = "md",
@@ -95,6 +97,7 @@ export const TinderDatePicker = ({
         label={label}
         description={description}
         errorMessage={errorMessage}
+        placeholder={placeholder}
         variant={variant}
         labelPlacement={labelPlacement}
         size={size}

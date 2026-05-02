@@ -9,7 +9,7 @@ export interface TinderDateFieldProps {
   description?: React.ReactNode;
   errorMessage?: React.ReactNode;
   placeholder?: string;
-  variant?: "default" | "bordered" | "flat" | "faded";
+  variant?: "default" | "bordered" | "flat" | "faded" | "ghost";
   labelPlacement?: "inside" | "outside" | "outside-left";
   size?: "sm" | "md" | "lg";
   isDisabled?: boolean;
